@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
+
+nav {
+    width: 100%;
+    z-index: 1;
+}
+
+.header {
+    width: 100%;
+    height: 93vh;
+    background-image: url(pexels-leah-newhouse-50725-3935702.jpg); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: "Funnel Display", sans-serif;
+    color: rgb(71, 68, 68);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header .top {
+    margin-top: 60px;
+    margin-left: 15px;
+}
+
+.header .bottom{
+    display: flex;
+    flex-direction: row-reverse;
+
+}
+
+.header button{
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    font-family: "Funnel Display", sans-serif;
+    color: rgb(71, 68, 68);
+}
+
+.header button:hover{
+    background-color: rgb(71, 68, 68);
+    color: #fff;
+}
+
+.container-top {
+    width: auto;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.container-top button {
+    margin: auto;
+}
+
+.container-top button{
+    width: 10%;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #E4690C;
+    color: white;
+}
+
+#aboutUs {
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.6) url('your-background-image.jpg') center/cover;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+    top: 20px;
+    left: -120px;
+}
+
+#aboutUs h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+#aboutUs p {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+}
+
+.cta-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 18px;
+    color: #fff;
+    background: #E4690C;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    position: relative;
+    z-index: 2;
+}
+
+.cta-button:hover {
+    background: #E4690C;
+}
+
+.nav-tabs {
+    border-bottom: none;
+}
+
+.nav-tabs .nav-link {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-link:hover {
+    color: #ff4500;
+}
+
+.nav-tabs .nav-link.active {
+    border-bottom: 3px solid #ff4500;
+}
+
+.tab-content {
+    margin-top: 20px;
+}
+
+.content-box {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container-midel {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.card {
+
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.card-img {
+    width: 100%;
+    height: 250px;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.rating {
+    display: flex;
+    gap: 5px;
+}
+
+.star {
+    color: #fbbf24; /* Yellow */
+}
+
+.btn-demand {
+    background-color: #ebf2ff;
+    color: #3b82f6;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.location {
+    color: #4b5563;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.card-description {
+    color: #6b7280;
+}
