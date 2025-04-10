@@ -8,7 +8,7 @@ nav {
 .header {
     width: 100%;
     height: 93vh;
-    background-image: url(pexels-leah-newhouse-50725-3935702.jpg); 
+    background-image: url(./../images/pexels-leah-newhouse-50725-3935702.jpg); 
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -31,7 +31,7 @@ nav {
 
 }
 
-.header button{
+.header a{
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(5px);
     border: none;
@@ -60,7 +60,7 @@ nav {
     margin: auto;
 }
 
-.container-top button{
+.container-top button, .container-top button a{
     width: 10%;
     padding: 5px;
     border-radius: 5px;

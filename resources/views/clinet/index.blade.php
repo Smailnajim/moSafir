@@ -49,15 +49,15 @@
         </div>
 
         <div class="bottom">
-            <button>Register</button>
-            <button>Login</button>
+            <a href="./register">Register</a>
+            <a href="./loging">Login</a>
         </div>
     </header>
 
     <div class="container mt-5">
         <div class="container-top">
             <h2>Découvrir Nos offres</h2>
-            <button>Offres</button>
+            <button><a href="./offers">Offres</a></button>
         </div>
 
         <h2>Nos promotions en Cours</h2>
@@ -78,46 +78,80 @@
         <div class="container-midel">
 
             <!-- Contenu Dynamique -->
-            <div class="card">
-                <img class="card-img" src="https://storage.googleapis.com/a1aa/image/tbdL1rygfsO_pQXwfyD26ebK7ib4M3QIBwU4H01g6wo.jpg" alt="Cityscape of Kuala Lumpur, Malaysia">
-                <div class="card-content">
-                    <div class="card-header">
-                        <div class="rating">
-                            <i class="star">★</i>
-                            <i class="star">★</i>
-                            <i class="star">★</i>
-                            <i class="star">★</i>
-                            <i class="star">★</i>
+            <div class="tab-content">
+                <div class="tab-pane show active" id="monde">
+                    @foreach ($Voyages as $Voyage)
+                        <div class="card">
+                            <img class="card-img" src="{{ $image }}" alt="{{ $name}}">
+                            <div class="card-content">
+                                <div class="card-header">
+                                    <div class="rating">
+                                        
+                                            @foreach ($stars as $star)
+                                                <i class="star">★</i>
+                                            @endforeach
+                                        
+                                    </div>
+                                    <button class="btn-demand">SUR DEMANDE</button>
+                                </div>
+                                <p class="location">
+                                    <i class="fa-map-marker">📍</i> {{ $location }}
+                                </p>
+                                <h2 class="card-title">{{ $title }}</h2>
+                                <p class="card-description">{{ $description }}</p>
+                            </div>
                         </div>
-                        <button class="btn-demand">SUR DEMANDE</button>
-                    </div>
-                    <p class="location">
-                        <i class="fa-map-marker">📍</i> Kuala Lumpur - Malaisie
-                    </p>
-                    <h2 class="card-title">Malaisie été 2024</h2>
-                    <p class="card-description">12 Jours / 10 Nuits + Vols + Hôtel + Repas selon programme</p>
-                </div>
-            </div>
-    
-            <div class="card">
-                <img class="card-img" src="https://storage.googleapis.com/a1aa/image/tbdL1rygfsO_pQXwfyD26ebK7ib4M3QIBwU4H01g6wo.jpg" alt="Cityscape of Kuala Lumpur, Malaysia">
-                <div class="card-content">
-                    <div class="card-header">
-                        <div class="rating">
-                            <i class="star">★</i>
-                            <i class="star">★</i>
-                            <i class="star">★</i>
-                            <i class="star">★</i>
-                            <i class="star">★</i>
+                    @endforeach
+                </div> 
+                <div class="tab-pane" id="maroc">
+                    @foreach ($Voyages as $Voyage)
+                        <div class="card">
+                            <img class="card-img" src="{{ $image }}" alt="{{ $name}}">
+                            <div class="card-content">
+                                <div class="card-header">
+                                    <div class="rating">
+                                        
+                                            @foreach ($stars as $star)
+                                                <i class="star">★</i>
+                                            @endforeach
+                                        
+                                    </div>
+                                    <button class="btn-demand">SUR DEMANDE</button>
+                                </div>
+                                <p class="location">
+                                    <i class="fa-map-marker">📍</i> {{ $location }}
+                                </p>
+                                <h2 class="card-title">{{ $title }}</h2>
+                                <p class="card-description">{{ $description }}</p>
+                            </div>
                         </div>
-                        <button class="btn-demand">SUR DEMANDE</button>
-                    </div>
-                    <p class="location">
-                        <i class="fa-map-marker">📍</i> Kuala Lumpur - Malaisie
-                    </p>
-                    <h2 class="card-title">Malaisie été 2024</h2>
-                    <p class="card-description">12 Jours / 10 Nuits + Vols + Hôtel + Repas selon programme</p>
-                </div>
+                    @endforeach
+                </div> 
+
+                <div class="tab-pane" id="weekend">
+                    @foreach ($Voyages as $Voyage)
+                        <div class="card">
+                            <img class="card-img" src="{{ $image }}" alt="{{ $name}}">
+                            <div class="card-content">
+                                <div class="card-header">
+                                    <div class="rating">
+                                        
+                                            @foreach ($stars as $star)
+                                                <i class="star">★</i>
+                                            @endforeach
+                                        
+                                    </div>
+                                    <button class="btn-demand">SUR DEMANDE</button>
+                                </div>
+                                <p class="location">
+                                    <i class="fa-map-marker">📍</i> {{ $location }}
+                                </p>
+                                <h2 class="card-title">{{ $title }}</h2>
+                                <p class="card-description">{{ $description }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div> 
             </div>
         </div>
 
