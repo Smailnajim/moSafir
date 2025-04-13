@@ -46,8 +46,8 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $data = $request->all;
-        $data["role_id"] = $this->roleRep->getByCulomn('name', 'Client');
+        $data = $request->all();
+        $data["role_id"] = $this->roleRep->getByCulomn('name', 'Client')->id;
         $this->userRep->create($data);
         redirect('/home');
     }

@@ -23,6 +23,7 @@ class Offer extends Model
         'description',
         'price',
         'stars',
+        'address_id',
     ];
     
     

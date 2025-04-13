@@ -61,6 +61,6 @@ class FloorRepository implements IRepository{
 
     public function getByCulomn(string $key, string $value)
     {
-        return $this->model->where($key, "=", $value);
+        return $this->model->where($key, "=", $value)->first();
     }
 }

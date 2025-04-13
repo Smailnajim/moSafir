@@ -22,6 +22,7 @@ class Post extends Model
      */
     protected $fillable = [
         'image',
-        'description'
+        'description',
+        'user_id'
     ];
 }

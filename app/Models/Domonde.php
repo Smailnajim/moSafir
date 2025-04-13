@@ -19,6 +19,8 @@ class Domonde extends Model
         'numberOfDays',
         'description',
         'stars',
+        'user_id',
+        'offer_id',
     ];
     
     

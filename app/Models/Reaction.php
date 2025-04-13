@@ -22,6 +22,8 @@ class Reaction extends Model
     protected $fillable = [
         'type',
         'comment',
+        'user_id',
+        'post_id',
     ];
     /**
      * The attributes that should be hidden for serialization.
