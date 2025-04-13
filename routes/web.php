@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,15 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    redirect();
+    redirect('/home');
 });
 Route::get('/home', function () {
     return view('clinet.index');
 })->name('home');
+
+Route::get('/login', );
+Route::post('/login', )->name('login');
+
+Route::get('/register',  [AuthController::class, 'registerView']);
+Route::post('/register', [AuthController::class, 'register']);
 
