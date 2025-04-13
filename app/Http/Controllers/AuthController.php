@@ -41,11 +41,16 @@ class AuthController extends Controller
         $user->last_name  = $request->last_name;
         $user->password   = $request->password;
         $user->email      = $request->email;
-        $u    = Role::where('name', 'Clinet')->first();
-        dd($user);
+        $user->role_id    = Role::where('name', 'Client')->first()->id;
         $user->save();
+        redirect('/home');
     }
     public function registerView() {
         return view('auth.register');
+    }
+
+    public function logout() {
+        $key = session()->pull('loginId');
+        dd($key);
     }
 }

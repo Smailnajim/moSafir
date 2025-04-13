@@ -8,6 +8,7 @@
 </head>
 <body>
     <form action="{{route()}}" method="post">
+        @csrf
         <input type="email" placeholder="e">
         <input type="password">
         <button type="submit">sub</button>

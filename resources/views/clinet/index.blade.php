@@ -65,13 +65,13 @@
 
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" data-bs-toggle="tab" href="#monde">Voyages Monde</a>
+                <a class="nav-link active" data-bs-toggle="tab" href="?voyage=monde">Voyages Monde</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#maroc">Voyages Maroc</a>
+                <a class="nav-link" data-bs-toggle="tab" href="?voyage=maroc">Voyages Maroc</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#weekend">Week-end</a>
+                <a class="nav-link" data-bs-toggle="tab" href="?voyage=weekend">Week-end</a>
             </li>
         </ul>
 
@@ -79,7 +79,7 @@
 
             <!-- Contenu Dynamique -->
             <div class="tab-content">
-                <div class="tab-pane show active" id="monde">
+                
                     @foreach ($Voyages as $Voyage)
                         <div class="card">
                             <img class="card-img" src="{{ $image }}" alt="{{ $name}}">
@@ -102,56 +102,7 @@
                             </div>
                         </div>
                     @endforeach
-                </div> 
-                <div class="tab-pane" id="maroc">
-                    @foreach ($Voyages as $Voyage)
-                        <div class="card">
-                            <img class="card-img" src="{{ $image }}" alt="{{ $name}}">
-                            <div class="card-content">
-                                <div class="card-header">
-                                    <div class="rating">
-                                        
-                                            @foreach ($stars as $star)
-                                                <i class="star">★</i>
-                                            @endforeach
-                                        
-                                    </div>
-                                    <button class="btn-demand">SUR DEMANDE</button>
-                                </div>
-                                <p class="location">
-                                    <i class="fa-map-marker">📍</i> {{ $location }}
-                                </p>
-                                <h2 class="card-title">{{ $title }}</h2>
-                                <p class="card-description">{{ $description }}</p>
-                            </div>
-                        </div>
-                    @endforeach
-                </div> 
-
-                <div class="tab-pane" id="weekend">
-                    @foreach ($Voyages as $Voyage)
-                        <div class="card">
-                            <img class="card-img" src="{{ $image }}" alt="{{ $name}}">
-                            <div class="card-content">
-                                <div class="card-header">
-                                    <div class="rating">
-                                        
-                                            @foreach ($stars as $star)
-                                                <i class="star">★</i>
-                                            @endforeach
-                                        
-                                    </div>
-                                    <button class="btn-demand">SUR DEMANDE</button>
-                                </div>
-                                <p class="location">
-                                    <i class="fa-map-marker">📍</i> {{ $location }}
-                                </p>
-                                <h2 class="card-title">{{ $title }}</h2>
-                                <p class="card-description">{{ $description }}</p>
-                            </div>
-                        </div>
-                    @endforeach
-                </div> 
+                
             </div>
         </div>
 
