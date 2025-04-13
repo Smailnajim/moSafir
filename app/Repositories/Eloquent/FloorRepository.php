@@ -30,14 +30,33 @@ class FloorRepository implements IRepository{
 
     public function deleteAll()
     {
+        $this->model->truncate();
     }
 
     public function updatetById(int $id, array $data)
     {
+        $model = $this->model->finde($id);
+        foreach ($data as $key => $value) {
+            $model->$key = $value;
+        }
+        if($model)
+        {
+            $model->save();
+            return true;
+        }
+        return false;
+        
     }
 
     public function deletetById(int $id)
     {
+        $model = $this->model->finde($id);
+        if($model)
+        {
+            $model->delete();
+            return true;
+        }
+        return false;
     }
 
 }
