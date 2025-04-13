@@ -25,17 +25,17 @@ class FloorRepository implements IRepository{
 
     public function getById(int $id)
     {
-        return $this->model->finde($id);
+        return $this->model->find($id);
     }
 
     public function deleteAll()
     {
-        $this->model->truncate();
+        return $this->model->truncate();
     }
 
     public function updatetById(int $id, array $data)
     {
-        $model = $this->model->finde($id);
+        $model = $this->model->find($id);
         foreach ($data as $key => $value) {
             $model->$key = $value;
         }
@@ -50,7 +50,7 @@ class FloorRepository implements IRepository{
 
     public function deletetById(int $id)
     {
-        $model = $this->model->finde($id);
+        $model = $this->model->find($id);
         if($model)
         {
             $model->delete();
