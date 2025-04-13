@@ -4,17 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Repositories\Eloquent\FloorRepository;
+use App\Repositories\Interfaces\IRepository;
 
 class AuthController extends Controller
-{
+{   
+    private $userRep;
+    private $roleRep;
+
+    public function __construct(IRepository $user)
+    {
+        $this->userRep = $user;
+        $this->roleRep = new FloorRepository(new Role);
+    }
+
     public function login(Request $request){
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        $user = User::where('email', $request->email)->first();
+        $user = $this->userRep->getByEmail($request->email);
         if($user || $user->password == $request->password){
             $request->session()->put('loginId', $user->id);
             if($user->role_id == 1)
@@ -36,13 +46,9 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $user = new User;
-        $user->first_name = $request->first_name;
-        $user->last_name  = $request->last_name;
-        $user->password   = $request->password;
-        $user->email      = $request->email;
-        $user->role_id    = Role::where('name', 'Client')->first()->id;
-        $user->save();
+        $data = $request->all;
+        $data["role_id"] = $this->roleRep->getByCulomn('name', 'Client');
+        $this->userRep->create($data);
         redirect('/home');
     }
     public function registerView() {
