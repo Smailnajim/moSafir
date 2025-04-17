@@ -5,17 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Repositories\Eloquent\FloorRepository;
-use App\Repositories\Interfaces\IRepository;
+use App\Repositories\Interfaces\IUser;
+use App\Repositories\Interfaces\IRole;
 
 class AuthController extends Controller
 {   
     private $userRep;
     private $roleRep;
 
-    public function __construct(IRepository $user)
+    public function __construct(IUser $user, IRole $role)
     {
         $this->userRep = $user;
-        $this->roleRep = new FloorRepository(new Role);
+        $this->roleRep = $role;
     }
 
     public function login(Request $request){
@@ -28,8 +29,8 @@ class AuthController extends Controller
         if($user || $user->password == $request->password){
             $request->session()->put('loginId', $user->id);
             if($user->role_id == 1)
-            return view('admin.index');
-            return view('client.index');
+            return redirect()->route('home');
+            return redirect()->route('home');
         }
         back()->with('status', 'email or password unvalid');
     }

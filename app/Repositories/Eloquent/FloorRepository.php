@@ -6,7 +6,7 @@ use App\Repositories\Interfaces\IRepository;
 use Illuminate\Database\Eloquent\Model;
 
 class FloorRepository implements IRepository{
-    private $model;
+    protected $model;
 
     public function __construct(Model $model)
     {

@@ -4,8 +4,9 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\User;
 use App\Repositories\Interfaces\IRepository;
+use App\Repositories\Interfaces\IUser;
 
-class UserRepository extends FloorRepository implements IRepository {
+class UserRepository extends FloorRepository implements IUser {
 
     public function __construct(User $user)
     {

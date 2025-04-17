@@ -22,9 +22,11 @@ Route::get('/home', function () {
     return view('clinet.index');
 })->name('home');
 
-Route::get('/login', );
-Route::post('/login', )->name('login');
+Route::get('/login', [AuthController::class, 'loginView']);
+Route::post('/login',[AuthController::class, 'login']);
 
 Route::get('/register',  [AuthController::class, 'registerView']);
 Route::post('/register', [AuthController::class, 'register']);
 
+Route::get('/register',  [AuthController::class, 'registerView']);
+Route::post('/register', [AuthController::class, 'register']);
