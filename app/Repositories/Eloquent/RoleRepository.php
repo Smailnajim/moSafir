@@ -17,5 +17,4 @@ class RoleRepository extends FloorRepository implements IRole{
         return $this->getByCulomn("name", $name);
     }
 
-
 }

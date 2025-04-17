@@ -12,27 +12,34 @@
     <div class="register-container">
         <h2>Register</h2>
         <form action="" method="post" id="registerForm" novalidate>
+            @csrf
             <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" required />
+                <label for="username">First Name</label>
+                <input type="text" name="first_name" id="username" required />
+                <div class="error" id="usernameError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="username">Last Name</label>
+                <input type="text" name="last_name" id="username" required />
                 <div class="error" id="usernameError"></div>
             </div>
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" required />
+                <input type="email" name="email" id="email" required />
                 <div class="error" id="emailError"></div>
             </div>
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" required />
+                <input type="password" name="password" id="password" required />
                 <div class="error" id="passwordError"></div>
             </div>
 
             <div class="form-group">
                 <label for="confirmPassword">Confirm Password</label>
-                <input type="password" id="confirmPassword" required />
+                <input type="password" name="confirm_password" id="confirmPassword" required />
                 <div class="error" id="confirmPasswordError"></div>
             </div>
 

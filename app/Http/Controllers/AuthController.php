@@ -13,10 +13,10 @@ class AuthController extends Controller
     private $userRep;
     private $roleRep;
 
-    public function __construct(IUser $user, IRole $role)
+    public function __construct(IUser $userR, IRole $roleR)
     {
-        $this->userRep = $user;
-        $this->roleRep = $role;
+        $this->userRep = $userR;
+        $this->roleRep = $roleR;
     }
 
     public function login(Request $request){
@@ -45,6 +45,7 @@ class AuthController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'password' => 'required',
+            'confirm_password' => 'required',
         ]);
 
         $data = $request->all();
