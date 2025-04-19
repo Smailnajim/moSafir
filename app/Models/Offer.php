@@ -8,14 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Offer extends Model
 {
     use HasFactory;
-    public function domond(){
+    public function domonds(){
         return $this->hasMany(Domonde::class);
     }
     public function address(){
         return $this->belongsTo(Address::class);
     }
     public function categories(){
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class, "offer_category");
     }
 
     protected $fillable = [

@@ -24,7 +24,7 @@
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required />
-                <div class="error" id="passwordError"></div>
+                <div class="error" id="passwordError">{{@session('status')}}</div>
                 
             </div>
 

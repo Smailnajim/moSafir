@@ -26,13 +26,14 @@ class AuthController extends Controller
         ]);
 
         $user = $this->userRep->getByEmail($request->email);
-        if($user || $user->password == $request->password){
+        if($user && ($user->password == $request->password)){
             $request->session()->put('loginId', $user->id);
             if($user->role_id == 1)
-            return redirect()->route('home');
+                return redirect("/admin");
+            
             return redirect()->route('home');
         }
-        back()->with('status', 'email or password unvalid');
+        return back()->with('status', 'email or password unvalid');
     }
     public function loginView() {
         return view('auth.login');
