@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Repositories\Eloquent\CategoryRepository;
 use App\Repositories\Eloquent\OfferRepository;
 use App\Repositories\Eloquent\RoleRepository;
 use App\Repositories\Eloquent\UserRepository;
+use App\Repositories\Interfaces\ICategory;
 use App\Repositories\Interfaces\IOffer;
 use App\Repositories\Interfaces\IRole;
 use App\Repositories\Interfaces\IUser;
@@ -23,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(IUser::class, UserRepository::class);
         $this->app->bind(IRole::class, RoleRepository::class);
         $this->app->bind(IOffer::class, OfferRepository::class);
+        $this->app->bind(ICategory::class, CategoryRepository::class);
     }
 
     /**

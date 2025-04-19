@@ -14,8 +14,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\User::factory(10)->create();
+        \App\Models\Address::factory(10)->create();
+        \App\Models\Domonde::factory(10)->create();
+        \App\Models\Offer::factory(10)->create();
         $this->call([
             RoleSeeder::class,
+            CategorySeeder::class
         ]);
     }
 }

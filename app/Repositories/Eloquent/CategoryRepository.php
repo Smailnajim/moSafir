@@ -11,4 +11,7 @@ class CategoryRepository extends FloorRepository implements ICategory{
     {
         parent::__construct($category);
     }
+    public function topThreeVoyagesByCategory($categ){
+        return $this->model::where('name', $categ)->first()->offers()->withCount('domonds')->orderByDesc('domonds_count')->limit(3)->get();
+    }
 }

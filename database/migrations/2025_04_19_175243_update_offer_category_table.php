@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOfferCategoryPivoTable extends Migration
+class UpdateOfferCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,6 +13,7 @@ class CreateOfferCategoryPivoTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('offer_category');
         Schema::create('offer_category', function (Blueprint $table) {
             $table->id();
             $table->foreignId('offer_id')->references('id')->on('offers')->onDelete('cascade');
@@ -28,6 +29,6 @@ class CreateOfferCategoryPivoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('offer_category_pivo');
+        Schema::dropIfExists('offer_category');
     }
 }

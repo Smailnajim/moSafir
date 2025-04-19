@@ -13,9 +13,4 @@ class OfferRepository extends FloorRepository implements IOffer{
         parent::__construct($offer);
         $this->categoryR = new CategoryRepository(new Category());
     }
-    public function topThreeVoyages($categ){
-        $category = $this->categoryR->getByCulomn("name", $categ);
-        $offers = $category->offers();
-        
-    }
 }
