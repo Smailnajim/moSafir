@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./css/styleIndex.css">
+    <link rel="stylesheet" href='{{ asset('css/styleindex.css') }}'>
 </head>
 
 <body>
@@ -78,33 +78,27 @@
         <div class="container-midel">
 
             <!-- Contenu Dynamique -->
-            <div class="tab-content">
-                
-                    @foreach ($Voyages as $Voyage)
-                        <div class="card">
-                            <img class="card-img" src="{{ $image }}" alt="{{ $name}}">
-                            <div class="card-content">
-                                <div class="card-header">
-                                    <div class="rating">
-                                        
-                                            @foreach ($stars as $star)
-                                                <i class="star">★</i>
-                                            @endforeach
-                                        
-                                    </div>
-                                    <button class="btn-demand">SUR DEMANDE</button>
+            
+                @foreach ($Voyages as $Voyage)
+                    <div class="card">
+                        <img class="card-img" src="{{ $Voyage->image }}" alt="{{ $Voyage->name}}">
+                        <div class="card-content">
+                            <div class="card-header">
+                                <div class="rating">
+                                    <i class="star">@for ($i = 0; $i < $Voyage->stars; $i++) ★ @endfor</i>
                                 </div>
-                                <p class="location">
-                                    <i class="fa-map-marker">📍</i> {{ $location }}
-                                </p>
-                                <h2 class="card-title">{{ $title }}</h2>
-                                <p class="card-description">{{ $description }}</p>
+                                <button class="btn-demand">SUR DEMANDE</button>
                             </div>
+                            <p class="location">
+                                <i class="fa-map-marker">📍</i> {{ $Voyage->location }}
+                            </p>
+                            <h2 class="card-title">{{ $Voyage->title }}</h2>
+                            <p class="card-description">{{ $Voyage->description }}</p>
                         </div>
-                    @endforeach
-                
+                    </div>
+                @endforeach
             </div>
-        </div>
+        
 
         <section id="aboutUs">
             <h2>À Propos de Nous</h2>

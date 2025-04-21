@@ -4,6 +4,7 @@ namespace App\Repositories\Eloquent;
 
 use App\Repositories\Interfaces\IRepository;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class FloorRepository implements IRepository{
     protected $model;
@@ -59,8 +60,10 @@ class FloorRepository implements IRepository{
         return false;
     }
 
-    public function getByCulomn(string $key, string $value)
+    public function getByCulomn(string $colum, string $value)
     {
-        return $this->model->where($key, "=", $value)->first();
+        return $this->model->where($colum, "=", $value)->first();
     }
+
+    
 }

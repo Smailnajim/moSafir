@@ -159,6 +159,8 @@ nav {
 
 .card {
 
+    width: 32%;
+    max-width: 500px;
     background-color: #fff;
     border-radius: 10px;
     overflow: hidden;

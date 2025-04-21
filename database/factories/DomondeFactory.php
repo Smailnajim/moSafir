@@ -15,7 +15,7 @@ class DomondeFactory extends Factory
     {
         return [
             'user_id' => $this->faker->numberBetween(1, 10),
-            'ofer_id' => $this->faker->numberBetween(1, 3),
+            'offer_id' => $this->faker->numberBetween(1, 10),
             'numberOfPersensons' => $this->faker->numberBetween(1, 5),
             'numberOfDays' => $this->faker->numberBetween(10, 30),
             'description' => $this->faker->text($maxNbChars = 100),
