@@ -15,7 +15,7 @@ class OfferRepository extends FloorRepository implements IOffer{
         $this->categoryR = new CategoryRepository(new Category());
     }
 
-    public function topThreeVoyagesByCategory($categ){
+    public function topThreeVoyagesByCategory(string $categ){
         $categoryO = $this->getFromTableByCulomn('categories', 'name', $categ);
         if(!count($categoryO)){
             $categ = "Morroco";
@@ -45,5 +45,16 @@ class OfferRepository extends FloorRepository implements IOffer{
         ->where($colum, '=', $value)
         ->get();
         return $resultat;
+    }
+
+    public function searchByname(string $name){
+        return getByCulomn("name", $name);
+    }
+
+    public function searchByCategory(array $categories){
+        $offer_count = DB::select('
+            select offers.* FROM offers
+            Join 
+        ', [$categ]);
     }
 }

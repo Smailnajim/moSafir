@@ -33,10 +33,10 @@
                         <a class="nav-link text-dark" href="{{url('offre')}}"><i class="bi bi-box"></i> offres</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{url('community')}}"><i class="bi bi-info-circle"></i> About us</a>
+                        <a class="nav-link text-dark" href="{{url('aboutus')}}"><i class="bi bi-info-circle"></i> About us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{url('aboutus')}}"><i class="fa-solid fa-earth-africa"></i> Community </a>
+                        <a class="nav-link text-dark" href="{{url('community')}}"><i class="fa-solid fa-earth-africa"></i> Community </a>
                     </li>
                 </ul>
             </div>
@@ -51,29 +51,29 @@
         <div class="showSidBare"></div>
         <section class="sidbar">
             <div>
-                <input type="text" placeholder="search...">
+                <input type="text" name="searchByname" placeholder="search...">
                 <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
             </div>
             <hr>
 
             <div>
                 <label for="hotel">Hotel</label>
-                <input id="hotel" type="checkbox">
+                <input id="hotel" name="searchByCategory" type="checkbox">
             </div>
 
             <div>
                 <label for="pace">pace</label>
-                <input id="pace" type="checkbox">
+                <input id="pace" name="searchByCategory" type="checkbox">
             </div>
 
             <div>
                 <label for="nature">nature</label>
-                <input id="nature" type="checkbox">
+                <input id="nature" name="searchByCategory" type="checkbox">
             </div>
 
             <div>
                 <label for="beach">beach</label>
-                <input id="beach" type="checkbox">
+                <input id="beach" name="searchByCategory" type="checkbox">
             </div>
             <hr>
         </section>

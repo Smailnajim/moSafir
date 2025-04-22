@@ -33,4 +33,9 @@ class OfferController extends Controller
         $Voyages = $this->offerRep->all();
         return view('clinet.offers', compact('Voyages'));
     }
+
+
+    public function filter(Request $request){
+        
+    }
 }

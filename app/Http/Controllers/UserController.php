@@ -12,4 +12,7 @@ class UserController extends Controller
     {
         $this->userR = $userR;
     }
+    public function aboutus(){
+        return view('clinet.aboutus');
+    }
 }

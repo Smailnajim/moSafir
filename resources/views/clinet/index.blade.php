@@ -28,7 +28,7 @@
                         <a class="nav-link text-dark active" href="{{url('home/morroco')}}"><i class="bi bi-house-door"></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{url('offre')}}"><i class="bi bi-box"></i> Offres</a>
+                        <a class="nav-link text-dark" href="{{url('offers')}}"><i class="bi bi-box"></i> Offres</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="{{url('aboutus')}}"><i class="bi bi-info-circle"></i> About us</a>
@@ -49,15 +49,15 @@
         </div>
 
         <div class="bottom">
-            <a href="./register">Register</a>
-            <a href="./loging">Login</a>
+            <a href="{{url('register')}}">Register</a>
+            <a href="{{url('login')}}">Login</a>
         </div>
     </header>
 
     <div class="container mt-5">
         <div class="container-top">
             <h2>Découvrir Nos offres</h2>
-            <button><a href="./offers">Offres</a></button>
+            <button><a href="{{url('offers')}}">Offres</a></button>
         </div>
 
         <h2>Nos promotions en Cours</h2>
