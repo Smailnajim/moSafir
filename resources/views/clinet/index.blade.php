@@ -25,16 +25,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-dark active" href=""><i class="bi bi-house-door"></i> Home</a>
+                        <a class="nav-link text-dark active" href="{{url('home/morroco')}}"><i class="bi bi-house-door"></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="./offer.html"><i class="bi bi-box"></i> offres</a>
+                        <a class="nav-link text-dark" href="{{url('offre')}}"><i class="bi bi-box"></i> Offres</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="#aboutUs"><i class="bi bi-info-circle"></i> About us</a>
+                        <a class="nav-link text-dark" href="{{url('aboutus')}}"><i class="bi bi-info-circle"></i> About us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="./Community.html"><i class="bi bi-envelope"></i> Community</a>
+                        <a class="nav-link text-dark" href="{{url('community')}}"><i class="fa-solid fa-earth-africa"></i> Community</a>
                     </li>
                 </ul>
             </div>
@@ -63,16 +63,10 @@
         <h2>Nos promotions en Cours</h2>
         <p>Réserver vos prochaines vacances sur notre plateforme « », votre agence qui vous garantit le meilleur prix <br> sur le marché.</p>
 
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" data-bs-toggle="tab" href="?voyage=monde">Voyages Monde</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="?voyage=maroc">Voyages Maroc</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="?voyage=weekend">Week-end</a>
-            </li>
+        <ul class="nav-menu">
+            <li><a href="morroco">Voyages Maroc</a></li>
+            <li><a href="monde">Voyages Monde</a></li>
+            <li><a href="weekend">Week-end</a></li>
         </ul>
 
         <div class="container-midel">

@@ -28,4 +28,9 @@ class OfferController extends Controller
         // }
         return view('clinet.index', compact('Voyages'));
     }
+
+    public function offers(){
+        $Voyages = $this->offerRep->all();
+        return view('clinet.offers', compact('Voyages'));
+    }
 }
