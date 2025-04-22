@@ -52,9 +52,29 @@ class OfferRepository extends FloorRepository implements IOffer{
     }
 
     public function searchByCategory(array $categories){
-        $offer_count = DB::select('
-            select offers.* FROM offers
-            Join 
-        ', [$categ]);
+        // $st = '"' . $categories[0] . '"';
+        // foreach ($categories as $key => $value) {
+        //     $st .= ', "' . $value . '"';
+        // }
+        // $of = DB::select('
+        //     select offers.id FROM offers
+        //     Join offer_category on offer_category.offer_id = offers.id
+        //     Join categories on offer_category.category_id = categories.id
+        //     WHERE categories.name IN (?)
+        //     GROUP BY offers.id
+        //     having count(DISTINCT categories.name) = ?
+        // ', [$st, count($categories)]);
+
+        $offers = $this->model::whereHas('categories', function ($query) use ($categories) {
+            $query->whereIn('name', $categories);
+        })
+        ->withCount(['categories as matched_categories_count' => function ($query) use ($categories) {
+            $query->whereIn('name', $categories);
+        }])
+        ->having('matched_categories_count', '=', count($categories))
+        ->get();        
+        
+        
+        return $offers;
     }
 }

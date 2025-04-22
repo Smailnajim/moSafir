@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OfferFormRequest;
 use App\Repositories\Interfaces\IOffer;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,9 @@ class OfferController extends Controller
     }
 
 
-    public function filter(Request $request){
-        
+    public function filter(OfferFormRequest $request){
+        if($request->method == 'searchByCategory')
+        $offers = $this->offerRep->searchByCategory($request->categories);
+        dd($offers);
     }
 }

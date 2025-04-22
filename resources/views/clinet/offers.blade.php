@@ -49,34 +49,22 @@
 
     <div class="container-fluid containe">
         <div class="showSidBare"></div>
-        <section class="sidbar">
+        <form action="" method="POST" class="sidbar">
             <div>
                 <input type="text" name="searchByname" placeholder="search...">
                 <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
             </div>
             <hr>
-
+            @foreach ($categories as $category)
+                
+            @endforeach
             <div>
-                <label for="hotel">Hotel</label>
-                <input id="hotel" name="searchByCategory" type="checkbox">
-            </div>
-
-            <div>
-                <label for="pace">pace</label>
-                <input id="pace" name="searchByCategory" type="checkbox">
-            </div>
-
-            <div>
-                <label for="nature">nature</label>
-                <input id="nature" name="searchByCategory" type="checkbox">
-            </div>
-
-            <div>
-                <label for="beach">beach</label>
                 <input id="beach" name="searchByCategory" type="checkbox">
+                <label for="beach">beach</label>
             </div>
             <hr>
-        </section>
+            <button  type="button" class="btn btn-info" type="submit">Filter</button>
+        </form>
         <section class="section-main">
             @foreach ($Voyages as $Voyage)
                 <div class="card">
