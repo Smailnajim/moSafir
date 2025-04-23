@@ -33,34 +33,42 @@ class OfferController extends Controller
         return view('clinet.offers', compact('voyages', 'categories'));
     }
 
-
     public function filter(OfferFormRequest $request){
-        
-        if($request->has('searchByname'))
-        $offers = $this->searchByname($request->searchByname);
-    }
-
-    public function searchByname(string $name){
-        return $this->offerRep->getByCulomn('name', $name);
+        $categories = $this->offerRep->allCategories();
+        $voyages[] = $this->offerRep->getByCulomn('title', $request->searchByname);
+        return view('clinet.offers', compact('voyages', 'categories'));
     }
 
     public function searchByCategories(OfferFormRequest $request){
-        $i = 0;
         $categories = [];
-        $category = "category0";
-        dd($request);
-        while($request->$category){
-            if($this->offerRep->checkCategoryIfExiste($request->$category)){
-                $categories[] = $request->$category;
+        for ($i=0; $i < $request->index; $i++) { 
+            $category = "category".($i);
+            if($request->$category){
+                if($this->offerRep->checkCategoryIfExiste($request->$category)){
+                    $categories[] = $request->$category;
+                }
             }
-            $category = "category".(++$i);
         }
-        
         $voyages = $this->offerRep->searchByCategory($categories);
         $categories = $this->offerRep->allCategories();
-        // return back()->with("voyages", $voyages);
-        // return redirect()->back()->withInput(['voyages' => $voyages]);
         return view('clinet.offers', compact('voyages', 'categories'));
 
     }
+    // public function searchByCategories(OfferFormRequest $request){
+    //     $i = 0;
+    //     $categories = [];
+    //     $category = "category0";
+    //     dd($request);
+    //     while($request->$category){
+    //         if($this->offerRep->checkCategoryIfExiste($request->$category)){
+    //             $categories[] = $request->$category;
+    //         }
+    //         $category = "category".(++$i);
+    //     }
+        
+    //     $voyages = $this->offerRep->searchByCategory($categories);
+    //     $categories = $this->offerRep->allCategories();
+    //     return view('clinet.offers', compact('voyages', 'categories'));
+
+    // }
 }

@@ -67,14 +67,15 @@
                     
                 @endforeach
                 <hr>
-                <button  name="index" value="{{$i}}" type="hidden"></button>
                 <button  class="btn btn-info" type="submit">Filter</button>
+                <input type="hidden" name="index" value="{{$i}}">
             </form>
         </section>
 
 
         <section class="section-main">
             @foreach ($voyages as $voyage)
+            
                 <div class="card">
                     <img class="card-img" src="{{ $voyage->image }}" alt="{{ $voyage->name}}">
                     <div class="card-content">
