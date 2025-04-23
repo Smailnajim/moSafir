@@ -15,10 +15,8 @@ class OfferRepository extends FloorRepository implements IOffer{
     }
 
     public function topThreeVoyagesByCategory(string $categ){
-        $categoryO = $this->getFromTableByCulomn('categories', 'name', $categ);
-        if(!count($categoryO)){
-            $categ = "Morroco";
-        }
+        if(!$this->checkCategoryIfExiste($categ))
+        $categ = "Morroco";
 
         $offer_count = DB::select('
             SELECT offers.id, COUNT(domondes.offer_id) AS countDo

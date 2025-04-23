@@ -66,7 +66,7 @@
         <ul class="nav-menu">
             <li><a href="morroco">Voyages Maroc</a></li>
             <li><a href="monde">Voyages Monde</a></li>
-            <li><a href="weekend">Week-end</a></li>
+            <li><a href="week-end">Week-end</a></li>
         </ul>
 
         <div class="container-midel">
