@@ -19,9 +19,6 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
-
-
 
             
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -49,38 +46,49 @@
 
     <div class="container-fluid containe">
         <div class="showSidBare"></div>
-        <form action="" method="POST" class="sidbar">
-            <div>
+        <section class="sidbar">
+            <form action="" method="POST" >
+                @csrf
                 <input type="text" name="searchByname" placeholder="search...">
-                <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
-            </div>
-            <hr>
-            @foreach ($categories as $category)
+                <button ><i class="fa-solid fa-magnifying-glass"></i></button>
                 
-            @endforeach
-            <div>
-                <input id="beach" name="searchByCategory" type="checkbox">
-                <label for="beach">beach</label>
-            </div>
-            <hr>
-            <button  type="button" class="btn btn-info" type="submit">Filter</button>
-        </form>
+            </form>
+
+            <form action="/offers/categories" method="POST" class="sidbar">
+                @csrf
+                @php
+                    $i = 0;
+                @endphp
+                @foreach ($categories as $category)
+                <div>
+                    <input id="beach{{$i}}" name="category{{$i}}" value="{{$category->name}}" type="checkbox">
+                    <label for="beach{{$i++}}">{{$category->name}}</label>
+                </div>
+                    
+                @endforeach
+                <hr>
+                <button  name="index" value="{{$i}}" type="hidden"></button>
+                <button  class="btn btn-info" type="submit">Filter</button>
+            </form>
+        </section>
+
+
         <section class="section-main">
-            @foreach ($Voyages as $Voyage)
+            @foreach ($voyages as $voyage)
                 <div class="card">
-                    <img class="card-img" src="{{ $Voyage->image }}" alt="{{ $Voyage->name}}">
+                    <img class="card-img" src="{{ $voyage->image }}" alt="{{ $voyage->name}}">
                     <div class="card-content">
                         <div class="card-header">
                             <div class="rating">
-                                <i class="star">@for ($i = 0; $i < $Voyage->stars; $i++) ★ @endfor</i>
+                                <i class="star">@for ($i = 0; $i < $voyage->stars; $i++) ★ @endfor</i>
                             </div>
                             <button class="btn-demand">SUR DEMANDE</button>
                         </div>
                         <p class="location">
-                            <i class="fa-map-marker">📍</i> {{ $Voyage->location }}
+                            <i class="fa-map-marker">📍</i> {{ $voyage->location }}
                         </p>
-                        <h2 class="card-title">{{ $Voyage->title }}</h2>
-                        <p class="card-description">{{ $Voyage->description }}</p>
+                        <h2 class="card-title">{{ $voyage->title }}</h2>
+                        <p class="card-description">{{ $voyage->description }}</p>
                     </div>
                 </div>
             @endforeach

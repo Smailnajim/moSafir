@@ -24,21 +24,43 @@ class OfferController extends Controller
 
     public function home(string $category){
         $Voyages  = $this->topThreeVoyages($category);
-        // foreach ($Voyages as $Voyage) {
-        //     dd($Voyage->stars);
-        // }
         return view('clinet.index', compact('Voyages'));
     }
 
     public function offers(){
-        $Voyages = $this->offerRep->all();
-        return view('clinet.offers', compact('Voyages'));
+        $voyages = $this->offerRep->all();
+        $categories = $this->offerRep->allCategories();
+        return view('clinet.offers', compact('voyages', 'categories'));
     }
 
 
     public function filter(OfferFormRequest $request){
-        if($request->method == 'searchByCategory')
-        $offers = $this->offerRep->searchByCategory($request->categories);
-        dd($offers);
+        
+        if($request->has('searchByname'))
+        $offers = $this->searchByname($request->searchByname);
+    }
+
+    public function searchByname(string $name){
+        return $this->offerRep->getByCulomn('name', $name);
+    }
+
+    public function searchByCategories(OfferFormRequest $request){
+        $i = 0;
+        $categories = [];
+        $category = "category0";
+        dd($request);
+        while($request->$category){
+            if($this->offerRep->checkCategoryIfExiste($request->$category)){
+                $categories[] = $request->$category;
+            }
+            $category = "category".(++$i);
+        }
+        
+        $voyages = $this->offerRep->searchByCategory($categories);
+        $categories = $this->offerRep->allCategories();
+        // return back()->with("voyages", $voyages);
+        // return redirect()->back()->withInput(['voyages' => $voyages]);
+        return view('clinet.offers', compact('voyages', 'categories'));
+
     }
 }

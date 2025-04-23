@@ -8,11 +8,10 @@ use App\Repositories\Interfaces\IOffer;
 use Illuminate\Support\Facades\DB;
 
 class OfferRepository extends FloorRepository implements IOffer{
-    private $categoryR;
     public function __construct(Offer $offer)
     {
         parent::__construct($offer);
-        $this->categoryR = new CategoryRepository(new Category());
+
     }
 
     public function topThreeVoyagesByCategory(string $categ){
@@ -76,5 +75,16 @@ class OfferRepository extends FloorRepository implements IOffer{
         
         
         return $offers;
+    }
+
+
+    public function allCategories(){
+        return Category::all("name");
+    }
+
+    public function checkCategoryIfExiste(string $category){
+        $t = Category::where("name", $category)->get();
+        if($t[0]->name == $category)
+        return true;
     }
 }

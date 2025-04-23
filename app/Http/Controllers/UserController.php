@@ -15,4 +15,11 @@ class UserController extends Controller
     public function aboutus(){
         return view('clinet.aboutus');
     }
+    public function test(){
+        return view('clinet.test');
+    }
+    public function psttest(Request $request){
+        $
+        dd($request);    
+    }
 }

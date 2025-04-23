@@ -30,6 +30,7 @@ Route::post('/login',[AuthController::class, 'login']);
 Route::get('/register',  [AuthController::class, 'registerView']);
 Route::post('/register', [AuthController::class, 'register']);
 
+Route::post('/offers/categories', [OfferController::class, 'searchByCategories']);
 Route::post('/offers', [OfferController::class, 'filter']);
 Route::get('/offers', [OfferController::class, 'offers']);
 Route::get('/aboutus', [UserController::class, 'aboutus']);
