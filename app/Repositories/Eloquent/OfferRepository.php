@@ -47,7 +47,7 @@ class OfferRepository extends FloorRepository implements IOffer{
     }
 
     public function searchByname(string $name){
-        return getByCulomn("name", $name);
+        return $this->getByCulomn("name", $name);
     }
 
     public function searchByCategory(array $categories){

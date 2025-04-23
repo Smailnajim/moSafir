@@ -32,7 +32,7 @@ Route::post('/register', [AuthController::class, 'register']);
 
 Route::post('/offers/categories', [OfferController::class, 'searchByCategories']);
 Route::post('/offers', [OfferController::class, 'filter']);
-Route::get('/offers', [OfferController::class, 'offers']);
+Route::get('/offers', [OfferController::class, 'offers'])->name('offers');
 Route::get('/aboutus', [UserController::class, 'aboutus']);
 // Route::get('/community', [::class, ]);
 

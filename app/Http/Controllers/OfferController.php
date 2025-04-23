@@ -40,6 +40,9 @@ class OfferController extends Controller
     }
 
     public function searchByCategories(OfferFormRequest $request){
+        if($request->has('all')){
+            return redirect()->route('offers');
+        }
         $categories = [];
         for ($i=0; $i < $request->index; $i++) { 
             $category = "category".($i);

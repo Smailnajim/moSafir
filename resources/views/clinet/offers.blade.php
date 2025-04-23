@@ -59,6 +59,11 @@
                 @php
                     $i = 0;
                 @endphp
+                <div>
+                    <input id="beach" name="all" value="all" type="checkbox">
+                    <label for="beach">All</label>
+                </div>
+                <hr>
                 @foreach ($categories as $category)
                 <div>
                     <input id="beach{{$i}}" name="category{{$i}}" value="{{$category->name}}" type="checkbox">
