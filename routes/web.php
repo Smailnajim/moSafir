@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,5 +35,7 @@ Route::post('/offers/categories', [OfferController::class, 'searchByCategories']
 Route::post('/offers', [OfferController::class, 'filter']);
 Route::get('/offers', [OfferController::class, 'offers'])->name('offers');
 Route::get('/aboutus', [UserController::class, 'aboutus']);
-// Route::get('/community', [::class, ]);
+
+Route::get('/community', [PostController::class, 'render']);
+// Route::get('/community', [::class, '']);
 

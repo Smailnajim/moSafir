@@ -4,10 +4,12 @@ namespace App\Providers;
 
 use App\Repositories\Eloquent\CategoryRepository;
 use App\Repositories\Eloquent\OfferRepository;
+use App\Repositories\Eloquent\PostRepository;
 use App\Repositories\Eloquent\RoleRepository;
 use App\Repositories\Eloquent\UserRepository;
 use App\Repositories\Interfaces\ICategory;
 use App\Repositories\Interfaces\IOffer;
+use App\Repositories\Interfaces\IPost;
 use App\Repositories\Interfaces\IRole;
 use App\Repositories\Interfaces\IUser;
 use Illuminate\Support\ServiceProvider;
@@ -26,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(IRole::class, RoleRepository::class);
         $this->app->bind(IOffer::class, OfferRepository::class);
         $this->app->bind(ICategory::class, CategoryRepository::class);
+        $this->app->bind(IPost::class, PostRepository::class);
     }
 
     /**
