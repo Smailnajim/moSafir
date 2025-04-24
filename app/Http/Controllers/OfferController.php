@@ -19,7 +19,7 @@ class OfferController extends Controller
         $category = strtolower($category);
         $category[0] = strtoupper($category[0]);
         $offers = $this->offerRep->topThreeVoyagesByCategory($category);
-        return $offers ;
+        return $offers;
     }
 
     public function home(string $category){

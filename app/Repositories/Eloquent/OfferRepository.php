@@ -16,8 +16,7 @@ class OfferRepository extends FloorRepository implements IOffer{
 
     public function topThreeVoyagesByCategory(string $categ){
         if(!$this->checkCategoryIfExiste($categ))
-        $categ = "Morroco";
-
+            $categ = Category::first()->name;
         $offer_count = DB::select('
             SELECT offers.id, COUNT(domondes.offer_id) AS countDo
             FROM offers
@@ -82,7 +81,9 @@ class OfferRepository extends FloorRepository implements IOffer{
 
     public function checkCategoryIfExiste(string $category){
         $t = Category::where("name", $category)->get();
-        if($t[0]->name == $category)
-        return true;
+        if(count($t) == 1)
+            if($t[0]->name == $category)
+                return true;
+        return false;
     }
 }
