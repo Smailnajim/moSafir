@@ -59,128 +59,29 @@
                     <div class="card-title">Posts</div>
                 </div>
                 
-                
-                <div class="post">
-                    <div class="post-header">
-                        <div class="avatar">
-                            <img src="https://via.placeholder.com/40" alt="User avatar">
+                @foreach ($posts as $post)
+                    <div class="post">
+                        <div class="post-header">
+                            <div class="avatar">
+                                <img src="{{ $post->userImage }}" alt="User avatar">
+                            </div>
+                            <div class="user-info">
+                                <div class="name">{{ $post->fullName }}</div>
+                                <div class="time">{{ $post->time }}</div>
+                            </div>
                         </div>
-                        <div class="user-info">
-                            <div class="name">John Doe</div>
-                            <div class="time">2 hours ago</div>
+                        <div class="post-content">
+                            {{ $post->description }}
+                            <div class="post-image">
+                                <img src="{{ $post->image }}" alt="kkk">
+                            </div>
                         </div>
-                    </div>
-                    <div class="post-content">
-                        Just finished my new project! It's been a long journey but I'm really proud of the results. Check it out and let me know what you think.
-                    </div>
-                    <div class="post-actions">
-                        <div class="action">Like</div>
-                        <div class="action">Comment</div>
-                        <div class="action">Share</div>
-                    </div>
-                </div>
-                
-                
-                <div class="post">
-                    <div class="post-header">
-                        <div class="avatar">
-                            <img src="https://via.placeholder.com/40" alt="User avatar">
-                        </div>
-                        <div class="user-info">
-                            <div class="name">Jane Smith</div>
-                            <div class="time">Yesterday</div>
+                        <div class="post-actions">
+                            <div class="action">Like</div>
+                            <div class="action">Comment</div>
                         </div>
                     </div>
-                    <div class="post-content">
-                        Beautiful day for a hike! The views were absolutely breathtaking. Nature always helps me clear my mind.
-                    </div>
-                    <div class="post-actions">
-                        <div class="action">Like</div>
-                        <div class="action">Comment</div>
-                        <div class="action">Share</div>
-                    </div>
-                </div>
-                
-                
-                <div class="post">
-                    <div class="post-header">
-                        <div class="avatar">
-                            <img src="https://via.placeholder.com/40" alt="User avatar">
-                        </div>
-                        <div class="user-info">
-                            <div class="name">Mike Johnson</div>
-                            <div class="time">3 days ago</div>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        Just learned a new coding technique that's going to save me hours of work. Always keep learning!
-                    </div>
-                    <div class="post-actions">
-                        <div class="action">Like</div>
-                        <div class="action">Comment</div>
-                        <div class="action">Share</div>
-                    </div>
-                </div>
-                
-                <div class="post">
-                    <div class="post-header">
-                        <div class="avatar">
-                            <img src="https://via.placeholder.com/40" alt="User avatar">
-                        </div>
-                        <div class="user-info">
-                            <div class="name">Sarah Williams</div>
-                            <div class="time">4 days ago</div>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        Just got back from an amazing vacation! Here are some highlights from my trip to the mountains.
-                    </div>
-                    <div class="post-actions">
-                        <div class="action">Like</div>
-                        <div class="action">Comment</div>
-                        <div class="action">Share</div>
-                    </div>
-                </div>
-                
-                <div class="post">
-                    <div class="post-header">
-                        <div class="avatar">
-                            <img src="https://via.placeholder.com/40" alt="User avatar">
-                        </div>
-                        <div class="user-info">
-                            <div class="name">David Brown</div>
-                            <div class="time">5 days ago</div>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        I'm excited to announce that I've started a new position at Tech Company! Looking forward to this new chapter in my career.
-                    </div>
-                    <div class="post-actions">
-                        <div class="action">Like</div>
-                        <div class="action">Comment</div>
-                        <div class="action">Share</div>
-                    </div>
-                </div>
-                
-                <div class="post">
-                    <div class="post-header">
-                        <div class="avatar">
-                            <img src="https://via.placeholder.com/40" alt="User avatar">
-                        </div>
-                        <div class="user-info">
-                            <div class="name">Emily Davis</div>
-                            <div class="time">1 week ago</div>
-                        </div>
-                    </div>
-                    <div class="post-content">
-                        Happy birthday to my amazing friend! Wishing you all the best on your special day. Let's celebrate soon!
-                    </div>
-                    <div class="post-actions">
-                        <div class="action">Like</div>
-                        <div class="action">Comment</div>
-                        <div class="action">Share</div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <div class="column right-column">

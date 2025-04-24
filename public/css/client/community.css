@@ -177,6 +177,16 @@ nav {
     line-height: 1.4;
 }
 
+.post-image img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-image img{
+    width: 100%;
+}
+
 .post-actions {
     display: flex;
     gap: 20px;
