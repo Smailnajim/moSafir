@@ -19,7 +19,6 @@ class UserController extends Controller
         return view('clinet.test');
     }
     public function psttest(Request $request){
-        $
         dd($request);    
     }
 }

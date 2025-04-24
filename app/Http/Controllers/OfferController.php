@@ -43,6 +43,9 @@ class OfferController extends Controller
         if($request->has('all')){
             return redirect()->route('offers');
         }
+        if($request->has('searchByname')){
+            return $this->filter($request);
+        }
         $categories = [];
         for ($i=0; $i < $request->index; $i++) { 
             $category = "category".($i);

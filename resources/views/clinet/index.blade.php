@@ -107,7 +107,7 @@
                 moSafir vous accompagne à chaque étape pour rendre votre séjour plus accessible et humain.  
                 <br>Rejoignez-nous et découvrez une nouvelle façon de voyager !
             </p>
-            <a href="#" class="cta-button">Découvrir Plus</a>
+            <a href="{{url('aboutus')}}" class="cta-button">Découvrir Plus</a>
         </section>
     </div>
 

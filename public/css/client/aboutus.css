@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -10,6 +12,33 @@ body{
 
 }
 
+nav {
+    width: 100%;
+    z-index: 1;
+}
+
+.nav-tabs {
+    border-bottom: none;
+}
+
+.nav-tabs .nav-link {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-link:hover {
+    color: #ff4500;
+}
+
+.nav-tabs .nav-link.active {
+    border-bottom: 3px solid #ff4500;
+}
 
 header {
     color: white;
@@ -19,13 +48,14 @@ header {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     background-color: rgb(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
-
+    position: relative;
+    bottom: -50px;
 }
-
 header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-    letter-spacing: 1px;
+    position: absolute;
+    bottom: 0px;
+    font-family: "Funnel Display", sans-serif;
+    color: rgb(71, 68, 68);
 }
 #aboutUs {
     max-width: 800px;
