@@ -27,7 +27,7 @@
                         <a class="nav-link text-dark active" href="{{url('home/morroco')}}"><i class="bi bi-house-door"></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{url('offre')}}"><i class="bi bi-box"></i> offres</a>
+                        <a class="nav-link text-dark" href="{{url('offers')}}"><i class="bi bi-box"></i> offres</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="{{url('aboutus')}}"><i class="bi bi-info-circle"></i> About us</a>

@@ -33,7 +33,7 @@
                         <a class="nav-link text-dark" href="{{url('aboutus')}}"><i class="bi bi-info-circle"></i> About us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="{{url('community')}}"><i class="fa-solid fa-earth-africa"></i> Community</a>
+                        <a class="nav-link text-dark" href="{{url('community')}}"><i class="fa-solid fa-earth-africa"></i> community</a>
                     </li>
                 </ul>
             </div>
