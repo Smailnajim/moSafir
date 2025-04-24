@@ -73,7 +73,7 @@
                         <div class="post-content">
                             {{ $post->description }}
                             <div class="post-image">
-                                <img src="{{ $post->image }}" alt="kkk">
+                                <img src="{{ $post->image }}" alt="Image">
                             </div>
                         </div>
                         <div class="post-actions">

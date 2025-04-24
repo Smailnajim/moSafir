@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Interfaces;
 
-interface IRole{
+interface IRole extends IRepository{
     public function findByname($name);
 
 }

@@ -10,4 +10,5 @@ interface IRepository{
     public function updatetById(int $id, array $data);
     public function deleteAll();
     public function deletetById(int $id);
+    public function getByCulomn(string $colum, string $value);
 }

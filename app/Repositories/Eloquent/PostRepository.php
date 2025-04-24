@@ -11,4 +11,8 @@ class PostRepository extends FloorRepository implements IPost{
     {
         parent::__construct($post);
     }
+
+    public function randomTenPosts(){
+        $id = rand(Post::min('id'), Post::max('id'));
+    }
 }

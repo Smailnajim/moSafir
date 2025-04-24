@@ -69,11 +69,8 @@ class OfferRepository extends FloorRepository implements IOffer{
         }])
         ->having('matched_categories_count', '=', count($categories))
         ->get();        
-        
-        
         return $offers;
     }
-
 
     public function allCategories(){
         return Category::all("name");

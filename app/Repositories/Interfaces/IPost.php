@@ -2,6 +2,6 @@
 
 namespace App\Repositories\Interfaces;
 
-interface IPost{
-
+interface IPost extends IRepository{
+public function randomTenPosts();
 }
