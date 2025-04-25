@@ -11,4 +11,5 @@ interface IRepository{
     public function deleteAll();
     public function deletetById(int $id);
     public function getByCulomn(string $colum, string $value);
+    public function checkIdIfExiste(int $id);
 }

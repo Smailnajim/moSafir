@@ -65,5 +65,14 @@ class FloorRepository implements IRepository{
         return $this->model->where($colum, "=", $value)->first();
     }
 
+    public function checkIdIfExiste(int $id)
+    {
+        $t = $this->model->find($id)->id;
+        if($t !== null)
+            if($t == $id)
+                return true;
+        return false;
+    }
+
     
 }

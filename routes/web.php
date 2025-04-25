@@ -20,10 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    redirect('/home');
+    return redirect()->route('aboutus');
 });
 
-Route::get('/home/{category}', [OfferController::class, 'home']);
+Route::get('/home/{category}', [OfferController::class, 'home'])->name('home');
 
 Route::get('/login', [AuthController::class, 'loginView']);
 Route::post('/login',[AuthController::class, 'login']);
@@ -34,7 +34,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/offers/categories', [OfferController::class, 'searchByCategories']);
 Route::post('/offers', [OfferController::class, 'filter']);
 Route::get('/offers', [OfferController::class, 'offers'])->name('offers');
-Route::get('/aboutus', [UserController::class, 'aboutus']);
+Route::get('/aboutus', [UserController::class, 'aboutus'])->name('aboutus');
 
 Route::get('/community', [PostController::class, 'render']);
 // Route::get('/community', [::class, '']);

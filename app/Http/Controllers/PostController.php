@@ -15,7 +15,7 @@ class PostController extends Controller
     }
 
     public function render(){
-        
+        $posts = $this->postR->randomTenPosts();
         return view('clinet.Community');
     }
 }
