@@ -67,12 +67,18 @@ class FloorRepository implements IRepository{
 
     public function checkIdIfExiste(int $id)
     {
-        $t = $this->model->find($id)->id;
+        $t = $this->model->find($id);
         if($t !== null)
-            if($t == $id)
+            if($t->id == $id)
                 return true;
         return false;
     }
 
-    
+    public function minId(){
+        return $this->model->min('id');
+    }
+
+    public function maxId(){
+        return $this->model->max('id');
+    }
 }

@@ -12,4 +12,6 @@ interface IRepository{
     public function deletetById(int $id);
     public function getByCulomn(string $colum, string $value);
     public function checkIdIfExiste(int $id);
+    public function minId();
+    public function maxId();
 }
