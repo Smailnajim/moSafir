@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use Illuminate\Http\Request;
-use App\Repositories\Eloquent\FloorRepository;
 use App\Repositories\Interfaces\IUser;
 use App\Repositories\Interfaces\IRole;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {   
@@ -25,13 +26,18 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $user = $this->userRep->getByEmail($request->email);
-        if($user && ($user->password == $request->password)){
-            $request->session()->put('loginId', $user->id);
-            if($user->role_id == 1)
-                return redirect("/admin");
+
+        if (Auth::attempt([
+            'email' => $request->email,
+            'password' => $request->password,
+        ])) 
+        {
+            $user = Auth::user();
             
-            return redirect()->route('home');
+            if ($user->role->name == 'Client') 
+                return redirect('/home/morocoo')->with('status', 'welcom ' . $user->last_name);
+            else if ($user->role->name == 'Admin') 
+                return redirect()->with('status', 'welcom Admin');
         }
         return back()->with('status', 'email or password unvalid');
     }
@@ -48,11 +54,19 @@ class AuthController extends Controller
             'password' => 'required',
             'confirm_password' => 'required',
         ]);
+        if($this->userRep->getByEmail($request->email) !== null)
+        return back()->with('status', 'email existe');
 
-        $data = $request->all();
-        $data["role_id"] = $this->roleRep->getByCulomn('name', 'Client')->id;
-        $this->userRep->create($data);
-        redirect('/home');
+        $user = $this->userRep->create([
+            'email' => $request->email,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'password' => Hash::make($request->password),
+            'role_id' => $this->roleRep->getByCulomn('name', 'Client')->id,
+        ]);
+
+        Auth::login($user);
+        return redirect('/home/morocoo')->with('status',  'welcom ' . $user->last_name);
     }
     public function registerView() {
         return view('auth.register');

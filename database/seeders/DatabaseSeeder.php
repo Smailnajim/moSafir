@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\Offer::factory(10)->create();
         $this->call([
             RoleSeeder::class,
-            CategorySeeder::class
+            CategorySeeder::class,
+            StatusSeeder::class
         ]);
     }
 }

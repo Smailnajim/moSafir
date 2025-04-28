@@ -11,7 +11,6 @@ class OfferRepository extends FloorRepository implements IOffer{
     public function __construct(Offer $offer)
     {
         parent::__construct($offer);
-
     }
 
     public function topThreeVoyagesByCategory(string $categ){

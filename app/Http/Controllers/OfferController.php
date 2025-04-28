@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\OfferFormRequest;
 use App\Repositories\Interfaces\IOffer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OfferController extends Controller
 {

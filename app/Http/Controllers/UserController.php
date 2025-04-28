@@ -2,23 +2,57 @@
 
 namespace App\Http\Controllers;
 
+use App\DTOs\UserDto;
+use App\Repositories\Interfaces\IRole;
+use App\Repositories\Interfaces\IStatus;
 use App\Repositories\Interfaces\IUser;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     private $userR;
-    public function __construct(IUser $userR)
+    private $roleR;
+    private $statusR;
+
+    public function __construct(IUser $userR, IRole $roleR, IStatus $statusR)
     {
         $this->userR = $userR;
+        $this->roleR = $roleR;
+        $this->statusR = $statusR;
     }
     public function aboutus(){
         return view('clinet.aboutus');
     }
-    public function test(){
-        return view('clinet.test');
+    
+
+    public function indexAdmin(){
+        $users = [];
+        $usersAll = $this->userR->all();
+        foreach ($usersAll as $userOne) {
+            $users[] = UserDto::createUsertDto(
+                $userOne->id,
+                $userOne->image,
+                $userOne->first_name,
+                $userOne->last_name,
+                $this->roleR->getById($userOne->role_id)->name,
+                $this->statusR->getById($userOne->status_id)->name
+            );
+        }
+        return view('admin.index', compact('users'));
     }
-    public function psttest(Request $request){
-        dd($request);    
+
+
+    public function activeUser(int $id){
+        $user = $this->userR->getById($id);
+        $status = $this->statusR->getByCulomn('name', 'Activ');
+        if($status === null)
+            $status = $this->statusR->create(['name' => 'Activ']);
+        $user->status_id = $status->id;
+    }
+    public function blockUser(int $id){
+        $user = $this->userR->getById($id);
+    }
+    public function deleteUser(int $id){
+        $user = $this->userR->getById($id);
     }
 }

@@ -13,6 +13,7 @@
 
 <body>
     
+    
     <nav style="position: fixed;" class="navbar navbar-expand-lg bg-white navbar-light">
         <div class="container-fluid">
 
@@ -47,10 +48,20 @@
                 Lets Explore <br> Earth Together
             </h1>
         </div>
-
+        
         <div class="bottom">
-            <a href="{{url('register')}}">Register</a>
-            <a href="{{url('login')}}">Login</a>
+            <h1>
+                @if (session()->has('status'))
+                    {{ session()->get('status') }}
+                @endif
+            </h1>
+
+            @guest
+                <a href="{{ url('register') }}">Register</a>
+                <a href="{{ url('login') }}">Login</a>    
+            @endguest
+        
+
         </div>
     </header>
 

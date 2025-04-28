@@ -14,6 +14,12 @@
         
         <form action="" method="POST" id="loginForm" >
             @csrf
+            <h1>
+                @if (session()->has('status'))
+                    {{ session()->get('status') }}
+                @endif
+            </h1>
+            
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required />

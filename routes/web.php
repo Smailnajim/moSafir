@@ -39,3 +39,7 @@ Route::get('/aboutus', [UserController::class, 'aboutus'])->name('aboutus');
 Route::get('/community', [PostController::class, 'render']);
 // Route::get('/community', [::class, '']);
 
+Route::get('/admin/index', [UserController::class, 'indexAdmin']);
+Route::post('/admin/active/{id}', [UserController::class, 'activeUser'])->name('activeUser');
+Route::post('/admin/block/{id}', [UserController::class, 'blockUser'])->name('blockUser');
+Route::post('/admin/delete/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');

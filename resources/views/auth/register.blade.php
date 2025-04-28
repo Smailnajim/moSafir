@@ -43,7 +43,11 @@
                 <div class="error" id="confirmPasswordError"></div>
             </div>
 
-
+            <h1 style="color: red;">
+                @if (session()->has('status'))
+                    {{ session()->get('status') }}
+                @endif
+            </h1>
             <button type="submit">Register</button>
         </form>
     </div>
