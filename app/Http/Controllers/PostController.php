@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    private  $postR;
-    private  $userR;
+    private IPost $postR;
+    private IUser $userR;
 
     public function __construct(IPost $PostRepository, IUser $UserRepository)
     {

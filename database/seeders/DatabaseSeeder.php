@@ -43,5 +43,6 @@ class DatabaseSeeder extends Seeder
             Offer_Category::class,
             Offer_Category::class
         ]);
+        \App\Models\Post::factory(23)->create();
     }
 }
