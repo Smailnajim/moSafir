@@ -61,6 +61,13 @@ class OfferController extends Controller
         return view('clinet.offers', compact('voyages', 'categories'));
 
     }
+
+
+    public function offersAdmin(){
+        $voyages = $this->offerRep->all();
+        return view('admin.offers', compact('voyages'));
+    }
+
     // public function searchByCategories(OfferFormRequest $request){
     //     $i = 0;
     //     $categories = [];

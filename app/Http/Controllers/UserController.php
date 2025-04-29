@@ -57,8 +57,10 @@ class UserController extends Controller
         // return redirect()->route('adminindex');
     }
     public function deleteUser(int $id){
-        $user = $this->userR->getById($id)->first_name;
-        if($this->userR->deletetById($id))
+        $user = $this->userR->getById($id);
+        if($this->userR->deletetById($user->id))
         return back()->with('status', 'delete ' . $user->first_name . ' By seccessful');
     }
+
+    
 }

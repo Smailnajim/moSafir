@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 
-@section('title', 'Admin Dashboard')
 
 @section('style')
 <link rel="stylesheet" href="{{ asset('css/admin/styleIndex.css') }}">

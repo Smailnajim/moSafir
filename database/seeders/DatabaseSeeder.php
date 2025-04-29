@@ -16,11 +16,32 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(10)->create();
         \App\Models\Address::factory(10)->create();
         \App\Models\Domonde::factory(50)->create();
-        \App\Models\Offer::factory(10)->create();
+        \App\Models\Offer::factory(40)->create();
         $this->call([
             RoleSeeder::class,
             CategorySeeder::class,
-            StatusSeeder::class
+            StatusSeeder::class,
+            Offer_Category::class,
+            Offer_Category::class,
+            Offer_Category::class,
+            Offer_Category::class,
+            Offer_Category::class,
+            Offer_Category::class,
+            Offer_Category::class,
+            Offer_Category::class,
+            Offer_Category::class,
+            Offer_Category::class,
+            Offer_Category::class,
+            Offer_Category::class,
+            Offer_Category::class,
+            Offer_Category::class,
+            Offer_Category::class,
+            Offer_Category::class,
+            Offer_Category::class,
+            Offer_Category::class,
+            Offer_Category::class,
+            Offer_Category::class,
+            Offer_Category::class
         ]);
     }
 }

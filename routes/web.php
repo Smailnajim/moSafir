@@ -43,3 +43,9 @@ Route::get('/admin/index', [UserController::class, 'indexAdmin'])->name('adminin
 Route::post('/admin/active/{id}', [UserController::class, 'activeUser'])->name('activeUser');
 Route::post('/admin/block/{id}', [UserController::class, 'blockUser'])->name('blockUser');
 Route::post('/admin/delete/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
+
+Route::get('/admin/offers', [OfferController::class, 'offersAdmin'])->name('adminoffers');
+
+Route::fallback(function(){
+    return view('errors.404');
+});
