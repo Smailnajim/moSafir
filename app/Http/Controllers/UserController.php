@@ -23,7 +23,6 @@ class UserController extends Controller
     public function aboutus(){
         return view('clinet.aboutus');
     }
-    
 
     public function indexAdmin(){
         $users = [];
@@ -43,16 +42,23 @@ class UserController extends Controller
 
 
     public function activeUser(int $id){
-        $user = $this->userR->getById($id);
         $status = $this->statusR->getByCulomn('name', 'Activ');
         if($status === null)
             $status = $this->statusR->create(['name' => 'Activ']);
-        $user->status_id = $status->id;
+        $this->userR->updateCulomn('status_id', $status->id, $id);
+        return redirect()->route('adminindex');
     }
     public function blockUser(int $id){
-        $user = $this->userR->getById($id);
+        $status = $this->statusR->getByCulomn('name', 'Block');
+        if($status === null)
+            $status = $this->statusR->create(['name' => 'Block']);
+        $this->userR->updateCulomn('status_id', $status->id, $id);
+        return redirect()->route('adminindex');
+        // return redirect()->route('adminindex');
     }
     public function deleteUser(int $id){
-        $user = $this->userR->getById($id);
+        $user = $this->userR->getById($id)->first_name;
+        if($this->userR->deletetById($id))
+        return back()->with('status', 'delete ' . $user->first_name . ' By seccessful');
     }
 }

@@ -60,7 +60,7 @@ class FloorRepository implements IRepository{
         return false;
     }
 
-    public function getByCulomn(string $colum, string $value)
+    public function getByCulomn(string $colum, $value)
     {
         return $this->model->where($colum, "=", $value)->first();
     }
@@ -80,5 +80,11 @@ class FloorRepository implements IRepository{
 
     public function maxId(){
         return $this->model->max('id');
+    }
+
+    public function updateCulomn(string $colum, $value, int $id){
+        $t = $this->getById($id);
+        $t->$colum = $value;
+        $t->save();
     }
 }

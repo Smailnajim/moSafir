@@ -16,7 +16,7 @@
             <div class="activity-content">
                 <p class="activity-text">{{$user->first_name .' '. $user->last_name}}</p>
                 <p class="activity-time">{{$user->role}}</p>
-                {{-- <p class="activity-time">{{$user->status}}</p> --}}
+                <p class="activity-time">{{$user->status}}</p>
             </div>
             <form action="/admin/active/{{$user->id}}" method="post">
                 @csrf
