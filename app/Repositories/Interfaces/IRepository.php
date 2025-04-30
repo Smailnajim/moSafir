@@ -15,4 +15,5 @@ interface IRepository{
     public function minId();
     public function maxId();
     public function updateCulomn(string $colum, $value, int $id);
+    public function deletetGroupById(array $ids);
 }

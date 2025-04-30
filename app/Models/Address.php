@@ -15,7 +15,4 @@ class Address extends Model
         'place',
     ];
 
-    public function offers(){
-        return $this->hasMany();
-    }
 }

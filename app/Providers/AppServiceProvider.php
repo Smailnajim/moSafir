@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Repositories\Eloquent\AddressRepository;
 use App\Repositories\Eloquent\CategoryRepository;
 use App\Repositories\Eloquent\OfferRepository;
 use App\Repositories\Eloquent\PostRepository;
@@ -9,6 +10,7 @@ use App\Repositories\Eloquent\ReactionRepository;
 use App\Repositories\Eloquent\RoleRepository;
 use App\Repositories\Eloquent\StatusRepository;
 use App\Repositories\Eloquent\UserRepository;
+use App\Repositories\Interfaces\IAddress;
 use App\Repositories\Interfaces\ICategory;
 use App\Repositories\Interfaces\IOffer;
 use App\Repositories\Interfaces\IPost;
@@ -35,6 +37,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(IPost::class, PostRepository::class);
         $this->app->bind(IStatus::class, StatusRepository::class);
         $this->app->bind(IReaction::class, ReactionRepository::class);
+        $this->app->bind(IAddress::class, AddressRepository::class);
     }
 
     /**

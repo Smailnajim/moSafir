@@ -3,17 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\OfferFormRequest;
+use App\Repositories\Interfaces\IAddress;
 use App\Repositories\Interfaces\IOffer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class OfferController extends Controller
 {
-    private $offerRep;
+    private IOffer $offerRep;
+    private IAddress $addressR;
 
-    public function __construct(IOffer $offerR, )
+    public function __construct(IOffer $offerR, IAddress $addressR)
     {
         $this->offerRep = $offerR;
+        $this->addressR = $addressR;
     }
 
     public function topThreeVoyages(string $category){
@@ -69,6 +72,8 @@ class OfferController extends Controller
     }
     public function singleOffer(int $id){
         $offer = $this->offerRep->getById($id);
+        $addres = $this->addressR->getById($offer->adress_id );
+        dd($addres);
         
         return view('admin.singleOffer', compact('offer'));
     }

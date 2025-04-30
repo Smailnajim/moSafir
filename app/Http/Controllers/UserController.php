@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DTOs\UserDto;
+use App\Repositories\Interfaces\IPost;
 use App\Repositories\Interfaces\IRole;
 use App\Repositories\Interfaces\IStatus;
 use App\Repositories\Interfaces\IUser;
@@ -10,15 +11,17 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    private $userR;
-    private $roleR;
-    private $statusR;
+    private IUser $userR;
+    private IRole $roleR;
+    private IStatus $statusR;
+    private IPost $postR;
 
-    public function __construct(IUser $userR, IRole $roleR, IStatus $statusR)
+    public function __construct(IUser $userR, IRole $roleR, IStatus $statusR, IPost $postR)
     {
         $this->userR = $userR;
         $this->roleR = $roleR;
         $this->statusR = $statusR;
+        $this->postR = $postR;
     }
     public function aboutus(){
         return view('clinet.aboutus');
@@ -57,9 +60,18 @@ class UserController extends Controller
         // return redirect()->route('adminindex');
     }
     public function deleteUser(int $id){
+        $ids = [];
         $user = $this->userR->getById($id);
-        if($this->userR->deletetById($user->id))
-        return back()->with('status', 'delete ' . $user->first_name . ' By seccessful');
+        $posts = $user->posts;
+
+        if($this->userR->deletetById($user->id)){
+            foreach ($posts as $post) {
+                $ids = $post->id;
+            }
+            $this->postR->deletetGroupById($ids);
+            return back()->with('status', 'delete ' . $user->first_name . ' By seccessful');
+        }
+        return back()->with('status', 'there is a problem whene tring to delet ' . $user->first_name);
     }
 
     
