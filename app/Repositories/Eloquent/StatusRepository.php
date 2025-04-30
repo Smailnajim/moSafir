@@ -12,5 +12,7 @@ class StatusRepository extends FloorRepository implements IStatus{
         parent::__construct($status);
     }
 
-
+    public function idOfActiv(){
+        return $this->model->where('name', 'Activ')->get()[0]->id;
+    }
 }

@@ -6,18 +6,21 @@ use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Repositories\Interfaces\IUser;
 use App\Repositories\Interfaces\IRole;
+use App\Repositories\Interfaces\IStatus;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {   
-    private $userRep;
-    private $roleRep;
+    private IUser $userRep;
+    private IRole $roleRep;
+    private IStatus $statusR;
 
-    public function __construct(IUser $userR, IRole $roleR)
+    public function __construct(IUser $userR, IRole $roleR, IStatus $statusR)
     {
         $this->userRep = $userR;
         $this->roleRep = $roleR;
+        $this->statusR = $statusR;
     }
 
     public function login(Request $request){
@@ -55,7 +58,7 @@ class AuthController extends Controller
             'confirm_password' => 'required',
         ]);
         if($this->userRep->getByEmail($request->email) !== null)
-        return back()->with('status', 'email existe');
+            return back()->with('status', 'email existe');
 
         $user = $this->userRep->create([
             'email' => $request->email,
@@ -63,6 +66,7 @@ class AuthController extends Controller
             'last_name' => $request->last_name,
             'password' => Hash::make($request->password),
             'role_id' => $this->roleRep->getByCulomn('name', 'Client')->id,
+            'status_id' => $this->statusR->idOfActiv(),
         ]);
 
         Auth::login($user);

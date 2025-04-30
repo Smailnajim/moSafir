@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Reaction;
 use Illuminate\Database\Seeder;
 use App\Models\Role;
 class DatabaseSeeder extends Seeder
@@ -44,5 +45,6 @@ class DatabaseSeeder extends Seeder
             Offer_Category::class
         ]);
         \App\Models\Post::factory(23)->create();
+        \App\Models\Reaction::factory(10)->create();
     }
 }

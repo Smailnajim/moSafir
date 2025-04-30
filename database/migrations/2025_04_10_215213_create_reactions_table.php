@@ -17,7 +17,7 @@ class CreateReactionsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('post_id')->constrained()->onDelete('cascade');
-            $table->string('like')->nullable();
+            $table->boolean('like');
             $table->string('comment')->nullable();
             $table->timestamps();
         });

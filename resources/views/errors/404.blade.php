@@ -299,7 +299,7 @@
             }
         }
 
-        setInterval(draw, 33);
+        setInterval(draw, 48);
 
         // Resize handler
         window.addEventListener('resize', () => {

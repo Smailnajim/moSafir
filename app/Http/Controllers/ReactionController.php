@@ -21,10 +21,12 @@ class ReactionController extends Controller
         $post = $this->postR->getById($id);
         if($post === null)
             return back()->with('status', 'Post not funde!');
-        $this->reactionR->
-    }
-
-    public function alredyReactioned(int $user_id, int $post_id){
-        
+        if(!$this->reactionR->alredyReactioned(auth()->user()->id, $id)){//createreaction and add like 
+            $this->reactionR->create([
+                'user_id' => auth()->user()->id,
+                'post_id' => $id,
+                'like' => false,
+            ]);
+        }
     }
 }

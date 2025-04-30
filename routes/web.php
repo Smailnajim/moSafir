@@ -44,9 +44,10 @@ Route::get('/community/like/{id}', [ReactionController::class, 'like']);
 Route::get('/admin/index', [UserController::class, 'indexAdmin'])->name('adminindex');
 Route::post('/admin/active/{id}', [UserController::class, 'activeUser'])->name('activeUser');
 Route::post('/admin/block/{id}', [UserController::class, 'blockUser'])->name('blockUser');
-Route::post('/admin/delete/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
+Route::delete('/admin/delete/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
 
 Route::get('/admin/offers', [OfferController::class, 'offersAdmin'])->name('adminoffers');
+Route::get('/admin/single-offer/{id}', [OfferController::class, 'singleOffer'])->name('singleOffer');
 
 Route::fallback(function(){
     return view('errors.404');

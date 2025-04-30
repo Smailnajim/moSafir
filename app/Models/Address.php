@@ -14,4 +14,8 @@ class Address extends Model
     protected $fillable = [
         'place',
     ];
+
+    public function offers(){
+        return $this->hasMany();
+    }
 }

@@ -5,198 +5,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    @yield('style')
+    {{-- @yield('style') --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f5f5f5;
-            color: #333;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style-type: none;
-        }
-
-        .container {
-            display: flex;
-            height: 100vh;
-        }
-
-        .sidebar {
-            width: 250px;
-            background-color: #fff;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            position: fixed;
-            height: 100%;
-            z-index: 100;
-        }
-
-        .sidebar.collapsed {
-            transform: translateX(-100%);
-        }
-
-        .sidebar-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .sidebar-header h1 {
-            font-size: 1.5rem;
-            color: #3b82f6;
-        }
-
-        .close-sidebar {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
-            color: #666;
-        }
-
-        .sidebar-menu {
-            padding: 20px;
-        }
-
-        .toggle-sidebar {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
-            margin-right: 15px;
-            display: none;
-            color: #666;
-        }
-
-        .sidebar-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .close-sidebar {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
-            color: #666;
-        }
-
-
-        .sidebar-menu {
-            padding: 20px;
-        }
-
-
-        .menu-item {
-            display: flex;
-            align-items: center;
-            padding: 12px;
-            margin-bottom: 8px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .menu-item:hover {
-            background-color: #f0f0f0;
-        }
-
-        .menu-item.active {
-            background-color: #e6f0ff;
-            color: #3b82f6;
-        }
-
-        .menu-item i {
-            margin-right: 12px;
-            font-size: 1.2rem;
-        }
-
-        .main-content {
-                margin-left: 0;
-            }
-
-            .main-content {
-            flex: 1;
-            margin-left: 250px;
-            transition: margin-left 0.3s ease;
-        }
-
-        .main-content.full-width {
-            margin-left: 0;
-        }
-        @media (max-width: 991px) {
-            .toggle-sidebar {
-                display: block;
-            }
-
-            .close-sidebar {
-                display: block;
-            }
-
-            .sidebar {
-                transform: translateX(-100%);
-            }
-
-            .sidebar.active {
-                transform: translateX(0);
-            }
-
-            .main-content {
-                margin-left: 0;
-            }
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <div class="container">
-        <div class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <h1 class="navbar-brand text-dark"><i class="fa-solid fa-street-view"></i> moSafir </h1>
-                <button class="close-sidebar" id="closeSidebar">
-                    <i class="fas fa-times"></i>
-                </button>
+<body class="bg-gray-100 text-gray-800 font-sans">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div id="sidebar" class="fixed w-64 h-full bg-white shadow-md transition-transform duration-300 ease-in-out transform -translate-x-full lg:translate-x-0 z-30">
+            <div class="flex items-center justify-between p-5 border-b border-gray-200">
+                <h1 class="text-xl font-bold text-blue-500"><i class="fa-solid fa-street-view"></i> moSafir</h1>
             </div>
-            <div class="sidebar-menu">
+            <div class="p-5">
                 <ul>
-                    <li class="menu-item">
-                        <i class="fas fa-users"></i>
-                        <a href="">Users</a>
+                    <li class="mb-2">
+                        <a href="{{url('admin/index')}}" class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                            <i class="fas fa-users mr-3 text-lg"></i>
+                            <span>Users</span>
+                        </a>
                     </li>
-                    <li class="menu-item ">
-                        <i class="fas fa-shopping-cart"></i>
-                        <a href="{{url('admin/offers')}}">Offers</a>
+                    <li class="mb-2">
+                        <a href="{{url('admin/offers')}}" class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                            <i class="fas fa-shopping-cart mr-3 text-lg"></i>
+                            <span>Offers</span>
+                        </a>
                     </li>
-                    <li class="menu-item">
-                        <i class="fas fa-file-alt"></i>
-                        <a href="">Reports</a>
+                    <li class="mb-2">
+                        <a href="" class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                            <i class="fas fa-file-alt mr-3 text-lg"></i>
+                            <span>Reports</span>
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <div class="main-content" id="mainContent">
-            @yield('content')
+        <!-- Main Content -->
+        <div id="mainContent" class="flex-1 transition-all duration-300 ease-in-out lg:ml-64">
+            <!-- Top Nav Bar -->
+            <header class="bg-white shadow-sm">
+                <div class="flex items-center justify-between p-4">
+                    <button id="toggleSidebar" class="text-gray-500 hover:text-gray-700 lg:hidden">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="relative" id="profileContainer">
+                        <button id="profileBtn" class="flex items-center space-x-2">
+                            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span class="hidden md:block">Admin User</span>
+                            
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <main class="p-6">
+                @yield('content')
+            </main>
         </div>
     </div>
 
@@ -211,50 +79,48 @@
 
         // Toggle Sidebar
         toggleSidebarBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
+            sidebar.classList.toggle('-translate-x-full');
         });
 
         // Close Sidebar
         closeSidebarBtn.addEventListener('click', () => {
-            sidebar.classList.remove('active');
+            sidebar.classList.add('-translate-x-full');
         });
 
         // Toggle Profile Dropdown
         profileBtn.addEventListener('click', () => {
-            profileDropdown.classList.toggle('show');
+            profileDropdown.classList.toggle('hidden');
         });
 
         // Close Profile Dropdown when clicking outside
         document.addEventListener('click', (event) => {
             if (!profileBtn.contains(event.target) && !profileDropdown.contains(event.target)) {
-                profileDropdown.classList.remove('show');
+                profileDropdown.classList.add('hidden');
             }
         });
 
-        // Menu Items Click
-        const menuItems = document.querySelectorAll('.menu-item');
+        // Menu Items Click (Active state)
+        const menuItems = document.querySelectorAll('li a');
         menuItems.forEach(item => {
             item.addEventListener('click', () => {
                 // Remove active class from all menu items
-                menuItems.forEach(i => i.classList.remove('active'));
+                menuItems.forEach(i => i.classList.remove('bg-blue-50', 'text-blue-500'));
                 // Add active class to clicked item
-                item.classList.add('active');
+                item.classList.add('bg-blue-50', 'text-blue-500');
 
                 // On mobile, close the sidebar after clicking a menu item
-                if (window.innerWidth < 992) {
-                    sidebar.classList.remove('active');
+                if (window.innerWidth < 1024) {
+                    sidebar.classList.add('-translate-x-full');
                 }
             });
         });
 
         // Responsive adjustments
         function handleResize() {
-            if (window.innerWidth < 992) {
-                sidebar.classList.remove('active');
-                mainContent.classList.add('full-width');
+            if (window.innerWidth >= 1024) {
+                sidebar.classList.remove('-translate-x-full');
             } else {
-                sidebar.classList.add('active');
-                mainContent.classList.remove('full-width');
+                sidebar.classList.add('-translate-x-full');
             }
         }
 

@@ -11,7 +11,7 @@ class OfferController extends Controller
 {
     private $offerRep;
 
-    public function __construct(IOffer $offerR)
+    public function __construct(IOffer $offerR, )
     {
         $this->offerRep = $offerR;
     }
@@ -66,6 +66,11 @@ class OfferController extends Controller
     public function offersAdmin(){
         $voyages = $this->offerRep->all();
         return view('admin.offers', compact('voyages'));
+    }
+    public function singleOffer(int $id){
+        $offer = $this->offerRep->getById($id);
+        
+        return view('admin.singleOffer', compact('offer'));
     }
 
     // public function searchByCategories(OfferFormRequest $request){

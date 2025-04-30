@@ -16,7 +16,12 @@ class FloorRepository implements IRepository{
 
     public function create(array $data)
     {
-        return $this->model->create($data);
+        // return $this->model->create($data);
+        $model = new $this->model;
+        foreach ($data as $key => $value) {
+            $model->$key = $value;
+        }
+        $model->save();
     }
 
     public function all()
