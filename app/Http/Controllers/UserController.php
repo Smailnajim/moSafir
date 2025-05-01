@@ -66,7 +66,7 @@ class UserController extends Controller
 
         if($this->userR->deletetById($user->id)){
             foreach ($posts as $post) {
-                $ids = $post->id;
+                $ids [] = $post->id;
             }
             $this->postR->deletetGroupById($ids);
             return back()->with('status', 'delete ' . $user->first_name . ' By seccessful');
@@ -74,5 +74,4 @@ class UserController extends Controller
         return back()->with('status', 'there is a problem whene tring to delet ' . $user->first_name);
     }
 
-    
 }

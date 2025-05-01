@@ -94,6 +94,6 @@ class FloorRepository implements IRepository{
     }
 
     public function deletetGroupById(array $ids){
-        $t = $this->model->whereIn('id', $ids)->delete();
+        $this->model->whereIn('id', $ids)->delete();
     }
 }
