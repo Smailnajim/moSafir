@@ -15,7 +15,8 @@ class AddressFactory extends Factory
     {
         return [
             //
-            'place' => $this->faker->text($maxNbChars = 20),
+            'city' => $this->faker->text($maxNbChars = 20),
+            'country_id' => $this->faker->numberBetween(1, 5),
         ];
     }
 }

@@ -11,8 +11,12 @@ class Address extends Model
     public function offers(){
         return $this->hasMany(Offer::class);
     }
+
+    public function country(){
+        return $this->belongsTo(Country::class);
+    }
+
     protected $fillable = [
         'city',
     ];
-
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DTOs\UserDto;
 use App\Repositories\Interfaces\IPost;
+use App\Repositories\Interfaces\IReaction;
 use App\Repositories\Interfaces\IRole;
 use App\Repositories\Interfaces\IStatus;
 use App\Repositories\Interfaces\IUser;
@@ -11,17 +12,19 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    private IPost $postR;
     private IUser $userR;
     private IRole $roleR;
     private IStatus $statusR;
-    private IPost $postR;
+    private IReaction $reactionR;
 
-    public function __construct(IUser $userR, IRole $roleR, IStatus $statusR, IPost $postR)
+    public function __construct(IUser $userR, IRole $roleR, IStatus $statusR, IPost $postR, IReaction $reactionR)
     {
         $this->userR = $userR;
         $this->roleR = $roleR;
         $this->statusR = $statusR;
         $this->postR = $postR;
+        $this->reactionR = $reactionR;
     }
     public function aboutus(){
         return view('clinet.aboutus');
@@ -68,10 +71,10 @@ class UserController extends Controller
             foreach ($posts as $post) {
                 $ids [] = $post->id;
             }
-            $this->postR->deletetGroupById($ids);
+            $rections = $this->postR->deletetPostsByIds($ids);
+            $this->reactionR->deletetGroupById($rections);
             return back()->with('status', 'delete ' . $user->first_name . ' By seccessful');
         }
         return back()->with('status', 'there is a problem whene tring to delet ' . $user->first_name);
     }
-
 }
