@@ -71,8 +71,9 @@ class UserController extends Controller
             foreach ($posts as $post) {
                 $ids [] = $post->id;
             }
-            $rections = $this->postR->deletetPostsByIds($ids);
-            $this->reactionR->deletetGroupById($rections);
+            $rectionsIds = $this->postR->deletetPostsByIds($ids);
+            $this->reactionR->getByCulomn('user_id', $id);
+            $this->reactionR->deletetGroupById($rectionsIds);
             return back()->with('status', 'delete ' . $user->first_name . ' By seccessful');
         }
         return back()->with('status', 'there is a problem whene tring to delet ' . $user->first_name);

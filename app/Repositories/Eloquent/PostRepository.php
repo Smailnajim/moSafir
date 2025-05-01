@@ -31,7 +31,4 @@ class PostRepository extends FloorRepository implements IPost{
         return $rectionsIds;
     }
 
-    public function deletetRectionsByIds(array $ids){
-        Reaction::whereIn('id', $ids)->delete();
-    }
 }

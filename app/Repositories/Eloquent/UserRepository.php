@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
+use App\Models\Reaction;
 use App\Models\User;
 use App\Repositories\Interfaces\IRepository;
 use App\Repositories\Interfaces\IUser;
