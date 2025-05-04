@@ -24,7 +24,7 @@
     <div class="p-6">
         <div class="flex justify-between items-center mb-6">
             <div class="text-sm text-gray-500">
-                <span class="mr-4"><i class="fas fa-map-marker-alt mr-1"></i> Address ID: {{ $offer->adress }}</span>
+                <span class="mr-4"><i class="fas fa-map-marker-alt mr-1"></i> Address: {{ $offer->adress }}</span>
             </div>
             <div class="flex space-x-2">
                 <a href="{{ url('admin/offers/' . $offer->id . '/edit') }}" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition-colors">
@@ -61,7 +61,7 @@
                     <span>{{ $offer->stars }}</span>
                 </li>
                 <li class="flex">
-                    <span class="font-medium w-32 text-gray-500">Address ID:</span>
+                    <span class="font-medium w-32 text-gray-500">Address:</span>
                     <span>{{ $offer->adress }}</span>
                 </li>
             </ul>

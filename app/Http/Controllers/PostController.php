@@ -114,4 +114,10 @@ class PostController extends Controller
         }
         return $postsDto;
     }
+
+    public function allPosts(){
+        $post = $this->postR->getById(3);
+        dd($post->);
+        return view('admin.posts', compact('post'));
+    }
 }

@@ -78,4 +78,9 @@ class UserController extends Controller
         }
         return back()->with('status', 'there is a problem whene tring to delet ' . $user->first_name);
     }
+    public function rr(Request $request){
+        dd($request->title);
+    }
+
+
 }

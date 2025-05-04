@@ -3,9 +3,8 @@
 namespace App\DTOs;
 
 
-class OffertDto {
-    public string $id;
-    public string $name;
+class OfferDto {
+    public int $id;
     public string $title;
     public string $price;
     public string $stars;
@@ -15,16 +14,14 @@ class OffertDto {
 
     private function __construct(
         string $image,
-        string $id,
-        string $name,
+        int $id,
         string $title,
         string $price,
         string $stars,
         string $adress,
-        string $description,
+        string $description
     ){
         $this->id = $id;
-        $this->name = $name;
         $this->image = $image;
         $this->title = $title;
         $this->stars = $stars;
@@ -34,18 +31,16 @@ class OffertDto {
         
     }
 
-    public static function createPostDto(string $image,
-    string $id, string $name, string $title, string $price, string $stars, string $adress, string $description): OffertDto
+    public static function createPostDto(string $image, int $id, string $title, string $price, string $stars, string $adress, string $description): OfferDto
     {
         return new self(
+            $image,
             $id,
-            $name,
             $title,
             $price,
             $stars,
-            $image,
             $adress,
-            $description,
+            $description
         );
     }
 }

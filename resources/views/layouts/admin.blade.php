@@ -5,14 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    {{-- @yield('style') --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-gray-100 text-gray-800 font-sans">
     <div class="flex h-screen">
-        <!-- Sidebar -->
         <div id="sidebar" class="fixed w-64 h-full bg-white shadow-md transition-transform duration-300 ease-in-out transform -translate-x-full lg:translate-x-0 z-30">
             <div class="flex items-center justify-between p-5 border-b border-gray-200">
                 <h1 class="text-xl font-bold text-blue-500"><i class="fa-solid fa-street-view"></i> moSafir</h1>
@@ -32,18 +30,16 @@
                         </a>
                     </li>
                     <li class="mb-2">
-                        <a href="" class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
+                        <a href="{{url('admin/posts')}}" class="flex items-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
                             <i class="fas fa-file-alt mr-3 text-lg"></i>
-                            <span>Reports</span>
+                            <span>Posts</span>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <!-- Main Content -->
         <div id="mainContent" class="flex-1 transition-all duration-300 ease-in-out lg:ml-64">
-            <!-- Top Nav Bar -->
             <header class="bg-white shadow-sm">
                 <div class="flex items-center justify-between p-4">
                     <button id="toggleSidebar" class="text-gray-500 hover:text-gray-700 lg:hidden">
@@ -61,7 +57,6 @@
                 </div>
             </header>
 
-            <!-- Page Content -->
             <main class="p-6">
                 @yield('content')
             </main>
@@ -69,7 +64,6 @@
     </div>
 
     <script>
-        // DOM Elements
         const sidebar = document.getElementById('sidebar');
         const mainContent = document.getElementById('mainContent');
         const toggleSidebarBtn = document.getElementById('toggleSidebar');
@@ -77,45 +71,36 @@
         const profileBtn = document.getElementById('profileBtn');
         const profileDropdown = document.getElementById('profileDropdown');
 
-        // Toggle Sidebar
         toggleSidebarBtn.addEventListener('click', () => {
             sidebar.classList.toggle('-translate-x-full');
         });
 
-        // Close Sidebar
         closeSidebarBtn.addEventListener('click', () => {
             sidebar.classList.add('-translate-x-full');
         });
 
-        // Toggle Profile Dropdown
         profileBtn.addEventListener('click', () => {
             profileDropdown.classList.toggle('hidden');
         });
 
-        // Close Profile Dropdown when clicking outside
         document.addEventListener('click', (event) => {
             if (!profileBtn.contains(event.target) && !profileDropdown.contains(event.target)) {
                 profileDropdown.classList.add('hidden');
             }
         });
 
-        // Menu Items Click (Active state)
         const menuItems = document.querySelectorAll('li a');
         menuItems.forEach(item => {
             item.addEventListener('click', () => {
-                // Remove active class from all menu items
                 menuItems.forEach(i => i.classList.remove('bg-blue-50', 'text-blue-500'));
-                // Add active class to clicked item
                 item.classList.add('bg-blue-50', 'text-blue-500');
 
-                // On mobile, close the sidebar after clicking a menu item
                 if (window.innerWidth < 1024) {
                     sidebar.classList.add('-translate-x-full');
                 }
             });
         });
 
-        // Responsive adjustments
         function handleResize() {
             if (window.innerWidth >= 1024) {
                 sidebar.classList.remove('-translate-x-full');
@@ -124,7 +109,6 @@
             }
         }
 
-        // Initial call and event listener for resize
         handleResize();
         window.addEventListener('resize', handleResize);
     </script>

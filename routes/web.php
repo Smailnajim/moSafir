@@ -44,10 +44,17 @@ Route::get('/community/like/{id}', [ReactionController::class, 'like']);
 Route::get('/admin/index', [UserController::class, 'indexAdmin'])->name('adminindex');
 Route::post('/admin/active/{id}', [UserController::class, 'activeUser'])->name('activeUser');
 Route::post('/admin/block/{id}', [UserController::class, 'blockUser'])->name('blockUser');
-Route::delete('/admin/delete/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
+Route::post('/admin/delete/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
+
 
 Route::get('/admin/offers', [OfferController::class, 'offersAdmin'])->name('adminoffers');
-Route::get('/admin/single-offer/{id}', [OfferController::class, 'singleOffer'])->name('singleOffer');
+Route::get('/admin/single-offer/{id}', [OfferController::class, 'singleOffer']);
+Route::put('admin/edit/offer', [OfferController::class, 'updateOffer'])->name('updateOffer');
+Route::delete('admin/offer/delete/{id}', [OfferController::class, 'deleteOffer'])->name('deleteOffer');
+
+
+
+Route::get('admin/posts', [PostController::class, 'allPosts'])->name('allPosts');
 
 Route::fallback(function(){
     return view('errors.404');
