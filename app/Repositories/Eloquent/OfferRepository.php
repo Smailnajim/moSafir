@@ -14,6 +14,7 @@ class OfferRepository extends FloorRepository implements IOffer{
     }
 
     public function topThreeVoyagesByCategory(string $categ){
+        $offers = [];
         if(!$this->checkCategoryIfExiste($categ))
             $categ = Category::first()->name;
         $offer_count = DB::select('

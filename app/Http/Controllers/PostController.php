@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DTOs\PostDto;
+use App\Models\Post;
 use App\Repositories\Interfaces\IPost;
 use App\Repositories\Interfaces\IUser;
 use Illuminate\Http\Request;
@@ -109,15 +110,23 @@ class PostController extends Controller
         foreach ($posts as $post) {
             $user = $this->userR->getById($post->user_id);
             $time = $this->differenceTime($post->created_at) . ' ago';
-            
-            $postsDto[] = PostDto::createPostDto($user->image, $user->first_name . ' ' . $user->last_name, $time, $post->description, $post->image);
+            $postsDto[] = PostDto::createPostDto($user->image, $user->first_name . ' ' . $user->last_name, $time, $post->description, $post->image, $user->status, $user->id, $user->id);
         }
         return $postsDto;
     }
 
     public function allPosts(){
-        $post = $this->postR->getById(3);
-        dd($post->);
-        return view('admin.posts', compact('post'));
+        $posts = [];
+        $postsI = $this->postR->pagination();
+        foreach ($postsI as $post) {
+            $user = $post->user;
+            $posts[] = +($user->image, $user->first_name.' '.$user->last_name, $this->differenceTime($post->created_at), $post->description, $post->image, $user->status->name, $post->id, $user->id);
+        }
+        return view('admin.t', compact('posts'));
+    }
+// 0607189671
+    public function deletePost(int $id){
+        if($this->postR->deletetById($id))
+            return redirect()->back();
     }
 }

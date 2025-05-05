@@ -55,6 +55,7 @@ Route::delete('admin/offer/delete/{id}', [OfferController::class, 'deleteOffer']
 
 
 Route::get('admin/posts', [PostController::class, 'allPosts'])->name('allPosts');
+Route::post('/admin/delete/post/{id}', [PostController::class, 'deletePost'])->name('deletePost');
 
 Route::fallback(function(){
     return view('errors.404');

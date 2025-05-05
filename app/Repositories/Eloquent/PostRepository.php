@@ -30,5 +30,9 @@ class PostRepository extends FloorRepository implements IPost{
         $this->deletetGroupById($ids);
         return $rectionsIds;
     }
-
+    
+    // public function betweenIds(array $ids){
+    //     $this->model->
+    //     return $rectionsIds;
+    // }
 }

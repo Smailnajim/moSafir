@@ -68,7 +68,8 @@ class AuthController extends Controller
             'role_id' => $this->roleRep->getByCulomn('name', 'Client')->id,
             'status_id' => $this->statusR->idOfActiv(),
         ]);
-
+        
+        
         Auth::login($user);
         return redirect('/home/morocoo')->with('status',  'welcom ' . $user->last_name);
     }

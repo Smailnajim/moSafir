@@ -52,14 +52,14 @@ class UserController extends Controller
         if($status === null)
             $status = $this->statusR->create(['name' => 'Activ']);
         $this->userR->updateCulomn('status_id', $status->id, $id);
-        return redirect()->route('adminindex');
+        return redirect()->back();
     }
     public function blockUser(int $id){
         $status = $this->statusR->getByCulomn('name', 'Block');
         if($status === null)
             $status = $this->statusR->create(['name' => 'Block']);
         $this->userR->updateCulomn('status_id', $status->id, $id);
-        return redirect()->route('adminindex');
+        return redirect()->back();
         // return redirect()->route('adminindex');
     }
     public function deleteUser(int $id){

@@ -22,6 +22,7 @@ class FloorRepository implements IRepository{
             $model->$key = $value;
         }
         $model->save();
+        return $model;
     }
 
     public function all()
@@ -95,5 +96,9 @@ class FloorRepository implements IRepository{
 
     public function deletetGroupById(array $ids){
         $this->model->whereIn('id', $ids)->delete();
+    }
+
+    public function pagination(){
+        return $this->model->paginate(10);
     }
 }

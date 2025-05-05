@@ -16,4 +16,5 @@ interface IRepository{
     public function maxId();
     public function updateCulomn(string $colum, $value, int $id);
     public function deletetGroupById(array $ids);
+    public function pagination();
 }
