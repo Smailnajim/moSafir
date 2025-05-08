@@ -1,11 +1,9 @@
 <?php
 
-use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\ReactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -66,4 +64,5 @@ Route::post('/admin/delete/post/{id}', [PostController::class, 'deletePost'])->n
 Route::fallback(function(){
     return view('errors.404');
 });
+
 

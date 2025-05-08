@@ -16,13 +16,7 @@ class FloorRepository implements IRepository{
 
     public function create(array $data)
     {
-        // return $this->model->create($data);
-        $model = new $this->model;
-        foreach ($data as $key => $value) {
-            $model->$key = $value;
-        }
-        $model->save();
-        return $model;
+        return $this->model->create($data);
     }
 
     public function all()
@@ -32,8 +26,7 @@ class FloorRepository implements IRepository{
 
     public function getById(int $id)
     {
-        $model = $this->model->find($id);
-        return $model;
+        return $this->model->find($id);
     }
 
     public function deleteAll()
@@ -67,7 +60,7 @@ class FloorRepository implements IRepository{
         return false;
     }
 
-    public function getByCulomn(string $colum, $value)
+    public function getByCulomn(string $colum, string $value)
     {
         return $this->model->where($colum, "=", $value)->first();
     }
@@ -87,19 +80,5 @@ class FloorRepository implements IRepository{
 
     public function maxId(){
         return $this->model->max('id');
-    }
-
-    public function updateCulomn(string $colum, $value, int $id){
-        $t = $this->getById($id);
-        $t->$colum = $value;
-        $t->save();
-    }
-
-    public function deletetGroupById(array $ids){
-        $this->model->whereIn('id', $ids)->delete();
-    }
-
-    public function pagination(){
-        return $this->model->paginate(10);
     }
 }

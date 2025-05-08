@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
     public function offers(){
-        return $this->belongsToMany(Offer::class);
+        return $this->belongsToMany(Offer::class, "offer_category");
     }
     protected $fillable = [
         'name',

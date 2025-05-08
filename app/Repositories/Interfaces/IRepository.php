@@ -10,11 +10,8 @@ interface IRepository{
     public function updatetById(int $id, array $data);
     public function deleteAll();
     public function deletetById(int $id);
-    public function getByCulomn(string $colum, $value);
+    public function getByCulomn(string $colum, string $value);
     public function checkIdIfExiste(int $id);
     public function minId();
     public function maxId();
-    public function updateCulomn(string $colum, $value, int $id);
-    public function deletetGroupById(array $ids);
-    public function pagination();
 }

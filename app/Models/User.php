@@ -24,9 +24,6 @@ class User extends Authenticatable
     public function domond(){
         return $this->hasMany(Domonde::class);
     }
-    public function status(){
-        return $this->belongsTo(Status::class);
-    }
     /**
      * The attributes that are mass assignable.
      *
@@ -39,7 +36,6 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
-        'status_id',
     ];
 
     /**

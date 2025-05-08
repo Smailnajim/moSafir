@@ -4,23 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use Illuminate\Http\Request;
+use App\Repositories\Eloquent\FloorRepository;
 use App\Repositories\Interfaces\IUser;
 use App\Repositories\Interfaces\IRole;
-use App\Repositories\Interfaces\IStatus;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {   
-    private IUser $userRep;
-    private IRole $roleRep;
-    private IStatus $statusR;
+    private $userRep;
+    private $roleRep;
 
-    public function __construct(IUser $userR, IRole $roleR, IStatus $statusR)
+    public function __construct(IUser $userR, IRole $roleR)
     {
         $this->userRep = $userR;
         $this->roleRep = $roleR;
-        $this->statusR = $statusR;
     }
 
     public function login(Request $request){
@@ -29,18 +25,13 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-
-        if (Auth::attempt([
-            'email' => $request->email,
-            'password' => $request->password,
-        ])) 
-        {
-            $user = Auth::user();
+        $user = $this->userRep->getByEmail($request->email);
+        if($user && ($user->password == $request->password)){
+            $request->session()->put('loginId', $user->id);
+            if($user->role_id == 1)
+                return redirect("/admin");
             
-            if ($user->role->name == 'Client') 
-                return redirect('/home/morocoo')->with('status', 'welcom ' . $user->last_name);
-            else if ($user->role->name == 'Admin') 
-                return redirect()->with('status', 'welcom Admin');
+            return redirect()->route('home');
         }
         return back()->with('status', 'email or password unvalid');
     }
@@ -57,21 +48,11 @@ class AuthController extends Controller
             'password' => 'required',
             'confirm_password' => 'required',
         ]);
-        if($this->userRep->getByEmail($request->email) !== null)
-            return back()->with('status', 'email existe');
 
-        $user = $this->userRep->create([
-            'email' => $request->email,
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'password' => Hash::make($request->password),
-            'role_id' => $this->roleRep->getByCulomn('name', 'Client')->id,
-            'status_id' => $this->statusR->idOfActiv(),
-        ]);
-        
-        
-        Auth::login($user);
-        return redirect('/home/morocoo')->with('status',  'welcom ' . $user->last_name);
+        $data = $request->all();
+        $data["role_id"] = $this->roleRep->getByCulomn('name', 'Client')->id;
+        $this->userRep->create($data);
+        redirect('/home');
     }
     public function registerView() {
         return view('auth.register');

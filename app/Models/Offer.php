@@ -12,7 +12,7 @@ class Offer extends Model
         return $this->hasMany(Domonde::class);
     }
     public function address(){
-        return $this->belongsTo(Address::class,"adress_id");
+        return $this->belongsTo(Address::class);
     }
     public function categories(){
         return $this->belongsToMany(Category::class, "offer_category");

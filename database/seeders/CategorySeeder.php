@@ -16,8 +16,7 @@ class CategorySeeder extends Seeder
     {
         $Categories = [
             ['name' => 'Morroco'],
-            ['name' => 'Monde'],
-            ['name' => 'Week-end'],
+            ['name' => 'Wakend'],
         ];
         foreach($Categories as $Category){
             Category::create($Category);
