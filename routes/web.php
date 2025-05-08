@@ -66,3 +66,4 @@ Route::post('/admin/delete/post/{id}', [PostController::class, 'deletePost'])->n
 Route::fallback(function(){
     return view('errors.404');
 });
+
