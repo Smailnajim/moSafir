@@ -27,7 +27,7 @@ class UserController extends Controller
         $this->reactionR = $reactionR;
     }
     public function aboutus(){
-        return view('clinet.aboutus');
+        return view('client.aboutus');
     }
 
     public function indexAdmin(){

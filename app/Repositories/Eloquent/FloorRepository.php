@@ -32,7 +32,8 @@ class FloorRepository implements IRepository{
 
     public function getById(int $id)
     {
-        return $this->model->find($id);
+        $model = $this->model->find($id);
+        return $model;
     }
 
     public function deleteAll()

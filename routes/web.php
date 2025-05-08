@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OfferController;
@@ -45,13 +46,17 @@ Route::get('/admin/index', [UserController::class, 'indexAdmin'])->name('adminin
 Route::post('/admin/active/{id}', [UserController::class, 'activeUser'])->name('activeUser');
 Route::post('/admin/block/{id}', [UserController::class, 'blockUser'])->name('blockUser');
 Route::post('/admin/delete/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
+Route::post('/admin/delete/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
 
 
 Route::get('/admin/offers', [OfferController::class, 'offersAdmin'])->name('adminoffers');
 Route::get('/admin/single-offer/{id}', [OfferController::class, 'singleOffer']);
 Route::put('admin/edit/offer', [OfferController::class, 'updateOffer'])->name('updateOffer');
-Route::delete('admin/offer/delete/{id}', [OfferController::class, 'deleteOffer'])->name('deleteOffer');
-
+Route::delete('/admin/offer/delete/{id}', [OfferController::class, 'deleteOffer'])->name('deleteOffer');
+Route::get('/admin/create/post', [OfferController::class, 'createOffer'])->name('createOffer');
+Route::post('/admin/create/post', [OfferController::class, 'storeOffer'])->name('storeOffer');
+// Route::get('/admin/country/cities/{id}', [AddressController::class, 'citiesByCountry'])->name('citiesByCountry');
+// Route::post('/admin/create/post', [OfferController::class, 'createOffer'])->name('createOffer');
 
 
 Route::get('admin/posts', [PostController::class, 'allPosts'])->name('allPosts');

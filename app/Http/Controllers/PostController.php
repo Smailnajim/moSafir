@@ -21,7 +21,7 @@ class PostController extends Controller
 
     public function render(){
         $posts = $this->randomTenPosts();
-        return view('clinet.Community', compact('posts'));
+        return view('client.Community', compact('posts'));
     }
 
     public function differenceTime(string $createdAt){
@@ -120,7 +120,7 @@ class PostController extends Controller
         $postsI = $this->postR->pagination();
         foreach ($postsI as $post) {
             $user = $post->user;
-            $posts[] = +($user->image, $user->first_name.' '.$user->last_name, $this->differenceTime($post->created_at), $post->description, $post->image, $user->status->name, $post->id, $user->id);
+            $posts[] = PostDto::createPostDto($user->image, $user->first_name.' '.$user->last_name, $this->differenceTime($post->created_at), $post->description, $post->image, $user->status->name, $post->id, $user->id);
         }
         return view('admin.t', compact('posts'));
     }

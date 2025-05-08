@@ -9,6 +9,11 @@
     </form>
     <div class="flex-grow">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="flex items-center justify-center">
+                <a href="{{url('admin/create/post')}}" class="rounded-full h-16 w-16 flex items-center justify-center bg-gray-500">
+                    +
+                </a>
+            </div>
         @foreach ($voyages as $voyage)
             <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
                 <img class="w-full h-48 object-cover object-center" src="{{ $voyage->image }}" alt="{{ $voyage->name}}">

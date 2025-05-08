@@ -66,14 +66,12 @@
 
     <div class="container mx-auto px-4 py-8">
         <div class="flex flex-col md:flex-row gap-6">
-            <!-- Sidebar -->
             <div class="w-full md:w-64 flex-shrink-0 bg-white rounded-lg shadow-md p-4">
-                <!-- Search Form -->
                 <form action="" method="POST" class="mb-6">
                     @csrf
                     <div class="flex">
                         <input type="text" name="searchByname" placeholder="Search..." 
-                               class="w-full px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            class="w-full px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <button class="bg-blue-500 text-white px-4 py-2 rounded-r-md hover:bg-blue-600 transition">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
@@ -90,7 +88,7 @@
                     <div class="mb-2">
                         <label class="flex items-center space-x-2 cursor-pointer">
                             <input id="all" name="all" value="all" type="checkbox" 
-                                   class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
                             <span>All</span>
                         </label>
                     </div>
@@ -101,7 +99,7 @@
                     <div class="mb-2">
                         <label class="flex items-center space-x-2 cursor-pointer">
                             <input id="category{{$i}}" name="category{{$i}}" value="{{$category->name}}" type="checkbox" 
-                                   class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
                             <span>{{$category->name}}</span>
                         </label>
                     </div>
