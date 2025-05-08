@@ -77,8 +77,9 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function logout() {
-        $key = session()->pull('loginId');
-        dd($key);
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/home/morroco');
     }
 }

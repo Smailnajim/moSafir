@@ -113,27 +113,27 @@
                 </div>
                 <div class="profile">
                     <div class="profile-avatar">
-                        <img src="https://via.placeholder.com/80" alt="Profile avatar">
+                        <img src="{{ $user->image}}" alt="Profile avatar">
                     </div>
-                    <div class="profile-name">Alex Johnson</div>
-                    <div class="profile-username">@alexjohnson</div>
+                    <div class="profile-name">{{$user->first_name $user->last_name}}</div>
+                    <div class="profile-username">@{{ $user->name}}</div>
                     
                     <div class="profile-stats">
                         <div class="stat">
-                            <div class="stat-value">248</div>
+                            <div class="stat-value">{{ $user->posts }}</div>
                             <div class="stat-label">Posts</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-value">1K</div>
+                            <div class="stat-value">{{ $user->followers}}</div>
                             <div class="stat-label">Followers</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-value">364</div>
+                            <div class="stat-value">{{ $user->following}}</div>
                             <div class="stat-label">Following</div>
                         </div>
                     </div>
                     
-                    <a href="{{url('profile/'.auth()->user()->first_name)}}" class="profile-button">View Profile</a>
+                    <a href="{{url('profile/'. $user->first_name)}}" class="profile-button">View Profile</a>
                 </div>
             </div>
         </div>

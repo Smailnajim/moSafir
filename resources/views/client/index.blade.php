@@ -27,7 +27,6 @@
 </head>
 
 <body class="bg-gray-50">
-    <!-- Navigation Bar -->
     <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-10">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
@@ -88,6 +87,12 @@
                     <a href="{{ url('login') }}" class="px-6 py-2 bg-white hover:bg-gray-100 text-blue-600 font-medium rounded-md transition">Login</a>
                 </div>
             @endguest
+            @auth
+                <form action="{{ url('logout') }}" method="post">
+                    @csrf
+                    <button type="submit" class="px-6 py-2 bg-white hover:bg-gray-100 text-blue-600 font-medium rounded-md transition">logout</button>
+                </form>
+            @endauth
         </div>
     </header>
 

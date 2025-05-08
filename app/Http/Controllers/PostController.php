@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DTOs\PostDto;
+use App\DTOs\ProfilleDto;
 use App\Models\Post;
 use App\Repositories\Interfaces\IPost;
 use App\Repositories\Interfaces\IUser;
@@ -20,10 +21,34 @@ class PostController extends Controller
     }
 
     public function render(){
+        dd(auth()->user()->);
+        ProfilleDto::createProfilleDto(
+            auth()->user()->image,
+            auth()->user()->first_name,
+            auth()->user()->last_name,
+
+        );
         $posts = $this->randomTenPosts();
         return view('client.Community', compact('posts'));
     }
 
+
+
+    $name,
+    $posts,
+    $followers,
+    $following,
+
+
+
+    image
+    first_name
+    last_name
+    name
+    posts
+    followers
+    following
+    $user->
     public function differenceTime(string $createdAt){
         $createdAtOb = date_create($createdAt);
         $now = date_create(now());
