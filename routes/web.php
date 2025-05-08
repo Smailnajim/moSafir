@@ -39,3 +39,4 @@ Route::get('/aboutus', [UserController::class, 'aboutus'])->name('aboutus');
 Route::get('/community', [PostController::class, 'render']);
 // Route::get('/community', [::class, '']);
 
+ 
