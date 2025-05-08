@@ -124,9 +124,26 @@ class PostController extends Controller
         }
         return view('admin.t', compact('posts'));
     }
-// 0607189671
+
     public function deletePost(int $id){
         if($this->postR->deletetById($id))
             return redirect()->back();
+    }
+
+    public function createPost(Request $request){
+        $valedate = $request->validate([
+            'description' => 'required',
+            'image' => 'required'
+        ]);
+        
+        $this->postR->create([
+            'description' => $valedate['description'],
+            'image' => $valedate['image'],
+            'user_id' => auth()->user()->id
+        ]);
+
+        return back();
+
+
     }
 }

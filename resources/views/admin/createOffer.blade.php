@@ -121,11 +121,11 @@
 
     
     document.getElementById('country').addEventListener('change', function () {
-    let country_id = this.value;
-    let cities = document.getElementById('city');
+        let country_id = this.value;
+        let cities = document.getElementById('city');
 
 
-    fetch('http://127.0.0.1:8000/api/admin/country/cities/' + country_id)
+        fetch('http://127.0.0.1:8000/api/admin/country/cities/' + country_id)
         .then(response => response.json())
         .then(data => {
             cities.innerHTML="";

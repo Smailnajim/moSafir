@@ -39,6 +39,7 @@ Route::get('/offers', [OfferController::class, 'offers'])->name('offers');
 Route::get('/aboutus', [UserController::class, 'aboutus'])->name('aboutus');
 
 Route::get('/community', [PostController::class, 'render']);
+Route::post('/community', [PostController::class, 'createPost']);
 Route::get('/community/like/{id}', [ReactionController::class, 'like']);
 // Route::get('/community', [::class, '']);
 
