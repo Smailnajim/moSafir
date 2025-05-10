@@ -2,11 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Role;
+use App\Models\Status;
 use Closure;
 use Illuminate\Http\Request;
 
-class IsAdmin
+class IsActiv
 {
     /**
      * Handle an incoming request.
@@ -17,10 +17,12 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        $role = Role::find(auth()->user()->role_id);
-        if (auth()->check() && $role->name == 'Admin') {
+        
+        $statu = Status::find(auth()->user()->status_id);
+        dd($statu);
+        if ($statu->name == 'Activ') {
             return $next($request);
         }
-        return redirect('/');
+        return redirect('/404');
     }
 }
