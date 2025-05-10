@@ -7,6 +7,7 @@ use App\Http\Requests\OfferFormRequest;
 use App\Models\Address;
 use App\Models\Country;
 use App\Models\Offer;
+use App\Models\Profile;
 use App\Repositories\Interfaces\IAddress;
 use App\Repositories\Interfaces\ICountry;
 use App\Repositories\Interfaces\IOffer;

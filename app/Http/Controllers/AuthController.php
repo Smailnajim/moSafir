@@ -54,20 +54,21 @@ class AuthController extends Controller
             'email' => 'required|email',
             'first_name' => 'required',
             'last_name' => 'required',
+            'name' => 'required|unique:profiles',
             'password' => 'required',
             'confirm_password' => 'required',
         ]);
         if($this->userRep->getByEmail($request->email) !== null)
             return back()->with('status', 'email existe');
 
-        $user = $this->userRep->create([
+        $user = $this->userRep->registerUser([
             'email' => $request->email,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'password' => Hash::make($request->password),
             'role_id' => $this->roleRep->getByCulomn('name', 'Client')->id,
             'status_id' => $this->statusR->idOfActiv(),
-        ]);
+        ], $request->name);
         
         
         Auth::login($user);

@@ -31,8 +31,9 @@ class PostRepository extends FloorRepository implements IPost{
         return $rectionsIds;
     }
     
-    // public function betweenIds(array $ids){
-    //     $this->model->
-    //     return $rectionsIds;
-    // }
+    public function countPosts(int $id){
+        return $this->model->where('user_id', $id)->count();
+    }
+
+
 }

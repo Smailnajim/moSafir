@@ -21,7 +21,7 @@ class ProfilleDto {
         string $name,
         string $posts,
         string $followers,
-        string $following,
+        string $following
     ){
         $this->image = $image;
         $this->first_name = $first_name;
@@ -39,7 +39,7 @@ class ProfilleDto {
         string $name,
         string $posts,
         string $followers,
-        string $following,
+        string $following
     ): ProfilleDto {
         return new self(
             $image,
@@ -48,7 +48,7 @@ class ProfilleDto {
             $name,
             $posts,
             $followers,
-            $following,
+            $following
         );
     }
 }

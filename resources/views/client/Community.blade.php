@@ -115,8 +115,8 @@
                     <div class="profile-avatar">
                         <img src="{{ $user->image}}" alt="Profile avatar">
                     </div>
-                    <div class="profile-name">{{$user->first_name $user->last_name}}</div>
-                    <div class="profile-username">@{{ $user->name}}</div>
+                    <div class="profile-name">{{$user->first_name . $user->last_name}}</div>
+                    <div class="profile-username">@_{{ $user->name}}</div>
                     
                     <div class="profile-stats">
                         <div class="stat">

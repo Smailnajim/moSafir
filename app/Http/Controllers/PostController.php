@@ -19,36 +19,21 @@ class PostController extends Controller
         $this->postR = $PostRepository;
         $this->userR = $UserRepository;
     }
-
+// profiles
+// user_profile_table_pivo
     public function render(){
-        dd(auth()->user()->);
-        ProfilleDto::createProfilleDto(
+        $user = ProfilleDto::createProfilleDto(
             auth()->user()->image,
             auth()->user()->first_name,
             auth()->user()->last_name,
-
+            auth()->user()->myProfile->name,
+            $this->postR->countPosts(auth()->user()->id),
+            auth()->user()->myProfile->users()->count(), //for calcel number followers
+            auth()->user()->profiles->count(), //for calcel number following
         );
         $posts = $this->randomTenPosts();
-        return view('client.Community', compact('posts'));
+        return view('client.Community', compact('posts', 'user'));
     }
-
-
-
-    $name,
-    $posts,
-    $followers,
-    $following,
-
-
-
-    image
-    first_name
-    last_name
-    name
-    posts
-    followers
-    following
-    $user->
     public function differenceTime(string $createdAt){
         $createdAtOb = date_create($createdAt);
         $now = date_create(now());

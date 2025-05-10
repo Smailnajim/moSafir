@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Symfony\Component\HttpKernel\Profiler\Profile;
+use App\Models\Profile;
 
 class User extends Authenticatable
 {
@@ -32,6 +32,11 @@ class User extends Authenticatable
     public function myProfile(){
         return $this->hasOne(Profile::class);
     }
+
+    public function profiles(){
+        return $this->belongsToMany(Profile::class, 'user_profile_table_pivo', 'user_id', 'profile_id');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
