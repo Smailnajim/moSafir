@@ -2,6 +2,6 @@
 
 namespace App\Repositories\Interfaces;
 
-interface IAddress{
+interface IAddress extends IRepository{
 
 }

@@ -14,8 +14,7 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => 1,
-            'category_id' => 1,
+            'user_id' => $this->faker->numberBetween(1, 10),
             'description' => $this->faker->text($maxNbChars = 20),
             'image' => 'https://kinsta.com/wp-content/uploads/2021/11/about-us-page.png',
         ];
