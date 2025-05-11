@@ -25,7 +25,7 @@ class AuthController extends Controller
 
     public function login(Request $request){
         $request->validate([
-            'email' => 'required|email',
+            'email' => 'required',
             'password' => 'required',
         ]);
 
@@ -36,11 +36,12 @@ class AuthController extends Controller
         ])) 
         {
             $user = Auth::user();
+            // dd($user->role->name);
             
             if ($user->role->name == 'Client') 
                 return redirect('/home/morocoo')->with('status', 'welcom ' . $user->last_name);
             else if ($user->role->name == 'Admin') 
-                return redirect()->with('status', 'welcom Admin');
+                return redirect('admin/index')->with('status', 'welcom Admin');
         }
         return back()->with('status', 'email or password unvalid');
     }

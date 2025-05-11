@@ -19,10 +19,10 @@ class IsActiv
     {
         
         $statu = Status::find(auth()->user()->status_id);
-        dd($statu);
+        // dd($statu->name);
         if ($statu->name == 'Activ') {
             return $next($request);
         }
-        return redirect('/404');
+        return redirect('/active');
     }
 }

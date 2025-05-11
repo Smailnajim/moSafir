@@ -85,6 +85,13 @@ class OfferController extends Controller
         $offer = OfferDto::createPostDto($offerM->image, $offerM->id, $offerM->title, $offerM->price, $offerM->stars, $addres->city .', '. $country->name, $offerM->description);
         return view('admin.updateOffer', compact('offer'));
     }
+    public function singleOfferClient(int $id){
+        $offerM = $this->offerRep->getById($id);
+        $addres = $offerM->address;
+        $country = $addres->country;
+        $offer = OfferDto::createPostDto($offerM->image, $offerM->id, $offerM->title, $offerM->price, $offerM->stars, $addres->city .', '. $country->name, $offerM->description);
+        return view('client.singleOffer', compact('offer'));
+    }
 
     public function updateOffer(Request $request){
         $data = [];

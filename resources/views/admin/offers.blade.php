@@ -22,7 +22,7 @@
                         <div class="star text-xl">
                             @for ($i = 0; $i < $voyage->stars; $i++) ★ @endfor
                         </div>
-                        <button class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded"><a href="{{ url('/admin/single-offer/' . $voyage->id) }}">SUR DEMANDE</a></button>
+                        <button class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-1 rounded"><a href="{{ url('/admin/single-offer/' . $voyage->id) }}">More</a></button>
                     </div>
                     <p class="text-gray-600 text-sm mb-2">
                         <i class="fa-solid fa-location-dot mr-1"></i> {{ $voyage->location }}

@@ -95,7 +95,7 @@
                         <div class="post-content">
                             {{ $post->description }}
                             <div class="post-image">
-                                <img src="{{ $post->image }}" alt="Image">
+                                <img src="{{ $post->image }}" alt="">
                             </div>
                         </div>
                         <div class="post-actions">
@@ -133,7 +133,7 @@
                         </div>
                     </div>
                     
-                    <a href="{{url('profile/'. $user->first_name)}}" class="profile-button">View Profile</a>
+                    {{-- <a href="{{url('profile/'. $user->first_name)}}" class="profile-button">View Profile</a> --}}
                 </div>
             </div>
         </div>
