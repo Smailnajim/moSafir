@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Profile;
 
 class User extends Authenticatable
 {
@@ -24,6 +25,18 @@ class User extends Authenticatable
     public function domond(){
         return $this->hasMany(Domonde::class);
     }
+    public function status(){
+        return $this->belongsTo(Status::class);
+    }
+
+    public function myProfile(){
+        return $this->hasOne(Profile::class);
+    }
+
+    public function profiles(){
+        return $this->belongsToMany(Profile::class, 'user_profile_table_pivo', 'user_id', 'profile_id');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -36,6 +49,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
+        'status_id',
     ];
 
     /**

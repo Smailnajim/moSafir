@@ -19,9 +19,10 @@ class UserFactory extends Factory
             'last_name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+            'password' => '$2y$10$kRBSbyLI6VT24HKUB1Og8eYb7220xSWvIK5sV8NjtXU.GidqtUcx2',//gufibekoku@mailinator.com
             'remember_token' => Str::random(10),
             'role_id' => 1, 
+            'status_id' => 1,
         ];
     }
 

@@ -11,10 +11,10 @@ class OfferRepository extends FloorRepository implements IOffer{
     public function __construct(Offer $offer)
     {
         parent::__construct($offer);
-
     }
 
     public function topThreeVoyagesByCategory(string $categ){
+        $offers = [];
         if(!$this->checkCategoryIfExiste($categ))
             $categ = Category::first()->name;
         $offer_count = DB::select('
@@ -31,7 +31,7 @@ class OfferRepository extends FloorRepository implements IOffer{
         foreach ($offer_count as $o_c) {
             $offers[] = $this->getById($o_c->id);
         }
-
+        
         return $offers;
     }
 
@@ -48,18 +48,6 @@ class OfferRepository extends FloorRepository implements IOffer{
     }
 
     public function searchByCategory(array $categories){
-        // $st = '"' . $categories[0] . '"';
-        // foreach ($categories as $key => $value) {
-        //     $st .= ', "' . $value . '"';
-        // }
-        // $of = DB::select('
-        //     select offers.id FROM offers
-        //     Join offer_category on offer_category.offer_id = offers.id
-        //     Join categories on offer_category.category_id = categories.id
-        //     WHERE categories.name IN (?)
-        //     GROUP BY offers.id
-        //     having count(DISTINCT categories.name) = ?
-        // ', [$st, count($categories)]);
 
         $offers = $this->model::whereHas('categories', function ($query) use ($categories) {
             $query->whereIn('name', $categories);
