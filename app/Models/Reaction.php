@@ -20,7 +20,7 @@ class Reaction extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'type',
+        'like',
         'comment',
         'user_id',
         'post_id',

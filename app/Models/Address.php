@@ -18,5 +18,6 @@ class Address extends Model
 
     protected $fillable = [
         'city',
+        'country_id'
     ];
 }

@@ -24,6 +24,5 @@ class Post extends Model
         'image',
         'description',
         'user_id',
-        'category_id',
     ];
 }
